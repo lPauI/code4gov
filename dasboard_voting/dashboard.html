@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | AdminPublic</title>
+    <meta name="description" content="Dashboard utilizator pentru platforma AdminPublic">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2 class="logo">AdminPublic</h2>
+                <button class="sidebar-toggle" id="sidebar-toggle">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-content">
+                <div class="user-info">
+                    <div class="avatar">
+                        <span class="status-indicator online"></span>
+                    </div>
+                    <div class="user-details">
+                        <h3>Maria Popescu</h3>
+                        <p>Cetățean</p>
+                    </div>
+                </div>
+                
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li class="active">
+                            <a href="#">
+                                <i data-feather="home"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#profile">
+                                <i data-feather="user"></i>
+                                <span>Profil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="voting.html">
+                                <i data-feather="check-square"></i>
+                                <span>Votare</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#complaints">
+                                <i data-feather="message-square"></i>
+                                <span>Sesizări</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#appointments">
+                                <i data-feather="calendar"></i>
+                                <span>Programări</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#documents">
+                                <i data-feather="file-text"></i>
+                                <span>Documente</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#surveys">
+                                <i data-feather="clipboard"></i>
+                                <span>Sondaje</span>
+                            </a>
+                        </li>
+                        <li class="separator"></li>
+                        <li>
+                            <a href="#settings">
+                                <i data-feather="settings"></i>
+                                <span>Setări</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#help">
+                                <i data-feather="help-circle"></i>
+                                <span>Ajutor</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="logout">
+                                <i data-feather="log-out"></i>
+                                <span>Deconectare</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content" id="dashboard-section">
+                <div class="page-header">
+                    <h1>Dashboard</h1>
+                    <p>Bine ai venit, Maria! Iată un rezumat al activității tale.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i data-feather="calendar"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>2</h3>
+                            <p>Programări active</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i data-feather="check-square"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>5</h3>
+                            <p>Voturi participante</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <i data-feather="file-text"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>8</h3>
+                            <p>Documente încărcate</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon amber">
+                            <i data-feather="award"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>120</h3>
+                            <p>Puncte acumulate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alerts -->
+                <div class="alert-container">
+                    <div class="alert alert-warning">
+                        <i data-feather="alert-triangle"></i>
+                        <div class="alert-content">
+                            <h4>Buletin expiră în curând</h4>
+                            <p>Buletinul tău va expira în 30 de zile. Programează-te pentru reînnoire.</p>
+                        </div>
+                        <button class="alert-action">Programează</button>
+                    </div>
+                </div>
+
+                <!-- Main Sections -->
+                <div class="dashboard-grid">
+                    <!-- Upcoming Appointments -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Programări viitoare</h2>
+                            <a href="#appointments" class="view-all">Vezi toate</a>
+                        </div>
+                        <div class="card-content">
+                            <div class="appointment-item">
+                                <div class="appointment-date">
+                                    <span class="day">15</span>
+                                    <span class="month">MAI</span>
+                                </div>
+                                <div class="appointment-details">
+                                    <h4>Direcția Permise Auto</h4>
+                                    <p>Reînnoire permis de conducere</p>
+                                    <span class="appointment-time">10:30 - 11:00</span>
+                                </div>
+                                <div class="appointment-actions">
+                                    <button class="btn btn-outline-primary btn-sm">
+                                        <i data-feather="edit-2"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger btn-sm">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="appointment-item">
+                                <div class="appointment-date">
+                                    <span class="day">22</span>
+                                    <span class="month">MAI</span>
+                                </div>
+                                <div class="appointment-details">
+                                    <h4>Serviciul de Evidență a Populației</h4>
+                                    <p>Reînnoire buletin</p>
+                                    <span class="appointment-time">14:00 - 14:30</span>
+                                </div>
+                                <div class="appointment-actions">
+                                    <button class="btn btn-outline-primary btn-sm">
+                                        <i data-feather="edit-2"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger btn-sm">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block">
+                                <i data-feather="plus"></i> Programare nouă
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Active Votes -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Votări active</h2>
+                            <a href="voting.html" class="view-all">Vezi toate</a>
+                        </div>
+                        <div class="card-content">
+                            <div class="vote-item">
+                                <h4>Amenajare parc în cartierul Mărăști</h4>
+                                <p>Votează pentru una din cele trei propuneri de amenajare a parcului din cartierul Mărăști.</p>
+                                <div class="vote-meta">
+                                    <span class="vote-deadline">
+                                        <i data-feather="clock"></i> Expiră în 5 zile
+                                    </span>
+                                    <span class="vote-participants">
+                                        <i data-feather="users"></i> 1,245 participanți
+                                    </span>
+                                </div>
+                                <button class="btn btn-primary btn-block">Votează acum</button>
+                            </div>
+                            <div class="vote-item">
+                                <h4>Bugetare participativă 2025</h4>
+                                <p>Votează proiectele propuse de cetățeni pentru bugetarea participativă din anul 2025.</p>
+                                <div class="vote-meta">
+                                    <span class="vote-deadline">
+                                        <i data-feather="clock"></i> Expiră în 12 zile
+                                    </span>
+                                    <span class="vote-participants">
+                                        <i data-feather="users"></i> 3,782 participanți
+                                    </span>
+                                </div>
+                                <button class="btn btn-primary btn-block">Votează acum</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Documents -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Documente recente</h2>
+                            <a href="#documents" class="view-all">Vezi toate</a>
+                        </div>
+                        <div class="card-content">
+                            <div class="document-list">
+                                <div class="document-item">
+                                    <div class="document-icon">
+                                        <i data-feather="file-text"></i>
+                                    </div>
+                                    <div class="document-details">
+                                        <h4>Buletin de identitate</h4>
+                                        <p>Încărcat pe 10 Apr 2025</p>
+                                        <div class="document-meta">
+                                            <span class="document-expiry warning">
+                                                <i data-feather="alert-circle"></i> Expiră în 30 zile
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="document-actions">
+                                        <button class="btn btn-icon">
+                                            <i data-feather="download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="document-item">
+                                    <div class="document-icon">
+                                        <i data-feather="file-text"></i>
+                                    </div>
+                                    <div class="document-details">
+                                        <h4>Permis de conducere</h4>
+                                        <p>Încărcat pe 15 Mar 2025</p>
+                                        <div class="document-meta">
+                                            <span class="document-expiry">
+                                                <i data-feather="check-circle"></i> Expiră în 6 luni
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="document-actions">
+                                        <button class="btn btn-icon">
+                                            <i data-feather="download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="document-item">
+                                    <div class="document-icon">
+                                        <i data-feather="file-text"></i>
+                                    </div>
+                                    <div class="document-details">
+                                        <h4>Certificat de naștere</h4>
+                                        <p>Încărcat pe 20 Feb 2025</p>
+                                        <div class="document-meta">
+                                            <span class="document-expiry">
+                                                <i data-feather="check-circle"></i> Nu expiră
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="document-actions">
+                                        <button class="btn btn-icon">
+                                            <i data-feather="download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block">
+                                <i data-feather="upload"></i> Încarcă document
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Active Surveys -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Sondaje active</h2>
+                            <a href="#surveys" class="view-all">Vezi toate</a>
+                        </div>
+                        <div class="card-content">
+                            <div class="survey-item">
+                                <div class="survey-header">
+                                    <h4>Satisfacție servicii publice</h4>
+                                    <span class="survey-points">+20 puncte</span>
+                                </div>
+                                <p>Evaluează calitatea serviciilor publice din orașul tău și ajută la îmbunătățirea lor.</p>
+                                <div class="survey-meta">
+                                    <span class="survey-time">
+                                        <i data-feather="clock"></i> Durată estimată: 5 min
+                                    </span>
+                                    <span class="survey-deadline">
+                                        <i data-feather="calendar"></i> Disponibil până pe 30 Mai
+                                    </span>
+                                </div>
+                                <button class="btn btn-primary btn-block">Completează sondajul</button>
+                            </div>
+                            <div class="survey-item">
+                                <div class="survey-header">
+                                    <h4>Transport public</h4>
+                                    <span class="survey-points">+15 puncte</span>
+                                </div>
+                                <p>Spune-ți părerea despre transportul public și ajută la îmbunătățirea serviciilor.</p>
+                                <div class="survey-meta">
+                                    <span class="survey-time">
+                                        <i data-feather="clock"></i> Durată estimată: 3 min
+                                    </span>
+                                    <span class="survey-deadline">
+                                        <i data-feather="calendar"></i> Disponibil până pe 15 Mai
+                                    </span>
+                                </div>
+                                <button class="btn btn-primary btn-block">Completează sondajul</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="dashboard-footer">
+                <p>&copy; <span id="current-year"></span> AdminPublic. Toate drepturile rezervate.</p>
+                <div class="footer-links">
+                    <a href="#">Termeni și condiții</a>
+                    <a href="#">Politica de confidențialitate</a>
+                    <a href="#">Ajutor</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
+
