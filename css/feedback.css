@@ -1,0 +1,445 @@
+/* Feedback Page Specific Styles */
+
+/* Form Styles */
+.feedback-form {
+    max-width: 100%;
+  }
+  
+  .form-row {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    position: relative;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #0f172a;
+  }
+  
+  .required {
+    color: #ef4444;
+    margin-left: 3px;
+  }
+  
+  .form-group input[type="text"],
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #0f172a;
+    transition: all 0.3s ease;
+  }
+  
+  .form-group input[type="text"]:focus,
+  .form-group textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+  
+  .char-counter {
+    text-align: right;
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 5px;
+  }
+  
+  .char-counter.exceeded,
+  .char-counter .exceeded {
+    color: #ef4444;
+  }
+  
+  /* Feedback Type Selector */
+  .feedback-type-selector {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .feedback-type-option {
+    flex: 1;
+    position: relative;
+  }
+  
+  .feedback-type-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .feedback-type-option label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    background-color: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .feedback-type-option input[type="radio"]:checked + label {
+    border-color: #3b82f6;
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+  
+  .feedback-type-option:first-child input[type="radio"]:checked + label {
+    border-color: #f59e0b;
+    background-color: rgba(245, 158, 11, 0.1);
+  }
+  
+  .feedback-type-option:first-child label i {
+    color: #f59e0b;
+  }
+  
+  .feedback-type-option:last-child label i {
+    color: #3b82f6;
+  }
+  
+  /* Tags */
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .tag-item {
+    position: relative;
+  }
+  
+  .tag-item input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .tag-item label {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 0;
+  }
+  
+  .tag-item input[type="checkbox"]:checked + label {
+    background-color: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+  }
+  
+  .selected-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #64748b;
+  }
+  
+  .selected-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border-radius: 15px;
+    font-weight: 500;
+  }
+  
+  .selected-tags.error {
+    color: #ef4444;
+    font-weight: 500;
+  }
+  
+  /* Checkbox Group */
+  .checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    margin-top: 3px;
+  }
+  
+  .checkbox-group.error label {
+    color: #ef4444;
+  }
+  
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    color: #64748b;
+  }
+  
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    width: 250px;
+    background-color: #1e293b;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+    font-weight: normal;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+  }
+  
+  .tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1e293b transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  /* File Upload */
+  .file-upload {
+    position: relative;
+    margin-bottom: 10px;
+  }
+  
+  .file-upload input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  
+  .file-upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 2px dashed #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+  }
+  
+  .file-upload-label:hover {
+    border-color: #3b82f6;
+    background-color: rgba(59, 130, 246, 0.05);
+  }
+  
+  .file-upload-label i {
+    font-size: 30px;
+    color: #3b82f6;
+    margin-bottom: 10px;
+  }
+  
+  .file-upload-label span {
+    color: #0f172a;
+    margin-bottom: 5px;
+  }
+  
+  .file-upload-label .file-info {
+    font-size: 12px;
+    color: #64748b;
+  }
+  
+  .file-list {
+    margin-top: 15px;
+  }
+  
+  .file-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .file-item i {
+    color: #3b82f6;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  
+  .file-name {
+    flex: 1;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .file-size {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0 10px;
+  }
+  
+  .remove-file {
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  
+  .remove-file:hover {
+    background-color: #fee2e2;
+    color: #ef4444;
+  }
+  
+  /* Form Actions */
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  /* Success Message */
+  .feedback-success-content {
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+  .success-icon {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(22, 163, 74, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+  
+  .success-icon i {
+    color: #16a34a;
+    font-size: 40px;
+  }
+  
+  .feedback-success-content h3 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  
+  .feedback-success-content p {
+    color: #64748b;
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .feedback-success-content #reference-number,
+  .feedback-success-content #points-earned {
+    font-weight: 600;
+    color: #3b82f6;
+  }
+  
+  .follow-up-note {
+    background-color: #f0f9ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #3b82f6;
+  }
+  
+  .feedback-success-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  /* Recent Feedback Table */
+  .feedback-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  
+  .feedback-type.complaint {
+    color: #f59e0b;
+  }
+  
+  .feedback-type.suggestion {
+    color: #3b82f6;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .feedback-type-selector {
+      flex-direction: column;
+    }
+  
+    .form-actions {
+      flex-direction: column;
+    }
+  
+    .form-actions button {
+      width: 100%;
+    }
+  
+    .feedback-success-actions {
+      flex-direction: column;
+    }
+  
+    .feedback-success-actions button {
+      width: 100%;
+    }
+  }
+  
+/* Remove special styling for links inside list items */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+  }
