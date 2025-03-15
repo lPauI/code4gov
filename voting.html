@@ -1,631 +1,977 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | AdminPublic</title>
-    <meta name="description" content="Dashboard utilizator pentru platforma AdminPublic">
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/feather-icons"></script>
+    <title>Government Portal - Voting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/voting.css">
 </head>
-<body>
-    <div class="dashboard-container">
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <h2 class="logo">AdminPublic</h2>
-                <button class="sidebar-toggle" id="sidebar-toggle">
-                    <i data-feather="menu"></i>
-                </button>
-            </div>
-            
-            <div class="sidebar-content">
+<body class="admin-theme">
+    
+    <!-- Role Badge -->
+    <div class="role-badge" id="role-badge">Administrator</div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-landmark logo-icon"></i>
+            <span class="logo-text">GovPortal</span>
+        </div>
+        <div class="header-actions">
+
+            <div class="user-menu" id="user-menu-toggle">
+                <div class="user-avatar">
+                    <span>JD</span>
+                </div>
                 <div class="user-info">
-                    <div class="avatar">
-                        <span class="status-indicator online"></span>
-                    </div>
-                    <div class="user-details">
-                        <h3>Maria Popescu</h3>
-                        <p>Cetățean</p>
-                    </div>
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Administrator</div>
                 </div>
                 
-                <nav class="sidebar-nav">
-                    <ul>
-                        <li>
-                            <a href="dashboard.html">
-                                <i data-feather="home"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#profile">
-                                <i data-feather="user"></i>
-                                <span>Profil</span>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a href="#">
-                                <i data-feather="check-square"></i>
-                                <span>Votare</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#complaints">
-                                <i data-feather="message-square"></i>
-                                <span>Sesizări</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#appointments">
-                                <i data-feather="calendar"></i>
-                                <span>Programări</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#documents">
-                                <i data-feather="file-text"></i>
-                                <span>Documente</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#surveys">
-                                <i data-feather="clipboard"></i>
-                                <span>Sondaje</span>
-                            </a>
-                        </li>
-                        <li class="separator"></li>
-                        <li>
-                            <a href="#settings">
-                                <i data-feather="settings"></i>
-                                <span>Setări</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#help">
-                                <i data-feather="help-circle"></i>
-                                <span>Ajutor</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.html" class="logout">
-                                <i data-feather="log-out"></i>
-                                <span>Deconectare</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            
-
-            <!-- Voting Content -->
-            <div class="dashboard-content" id="voting-section">
-                <div class="page-header">
-                    <h1>Votare</h1>
-                    <p>Participă la deciziile comunității tale prin vot electronic securizat.</p>
-                </div>
-
-                <!-- Voting Stats -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon blue">
-                            <i data-feather="check-square"></i>
+                <!-- User Dropdown -->
+                <div class="user-dropdown" id="user-dropdown">
+                    <div class="user-dropdown-header">
+                        <div class="user-dropdown-avatar">
+                            <span>JD</span>
                         </div>
-                        <div class="stat-details">
-                            <h3>5</h3>
-                            <p>Voturi participante</p>
+                        <div class="user-dropdown-info">
+                            <div class="user-dropdown-name">John Doe</div>
+                            <div class="user-dropdown-role">Administrator</div>
                         </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon green">
-                            <i data-feather="trending-up"></i>
+                    <div class="user-dropdown-body">
+                        <div class="user-dropdown-item">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
                         </div>
-                        <div class="stat-details">
-                            <h3>3</h3>
-                            <p>Inițiative active</p>
+                        <div class="user-dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
                         </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon purple">
-                            <i data-feather="award"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>50</h3>
-                            <p>Puncte acumulate</p>
+                        <div class="user-dropdown-item" id="switch-role-btn">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Switch to User View</span>
                         </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon amber">
-                            <i data-feather="users"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>12,458</h3>
-                            <p>Cetățeni participanți</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Voting Tabs -->
-                <div class="tabs-container">
-                    <div class="tabs">
-                        <button class="tab-btn active" data-tab="active-votes">Inițiative active</button>
-                        <button class="tab-btn" data-tab="my-votes">Voturile mele</button>
-                        <button class="tab-btn" data-tab="past-votes">Inițiative încheiate</button>
-                    </div>
-
-                    <!-- Active Votes Tab -->
-                    <div class="tab-content active" id="active-votes">
-                        <div class="vote-cards">
-                            <div class="vote-card">
-                                <div class="vote-card-header">
-                                    <span class="vote-category">Urbanism</span>
-                                    <span class="vote-deadline">
-                                        <i data-feather="clock"></i> Expiră în 5 zile
-                                    </span>
-                                </div>
-                                <h3>Amenajare parc în cartierul Mărăști</h3>
-                                <p>Votează pentru una din cele trei propuneri de amenajare a parcului din cartierul Mărăști.</p>
-                                <div class="vote-meta">
-                                    <span class="vote-participants">
-                                        <i data-feather="users"></i> 1,245 participanți
-                                    </span>
-                                    <span class="vote-points">
-                                        <i data-feather="award"></i> +15 puncte
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary btn-block vote-btn" data-vote-id="1">Votează acum</button>
-                            </div>
-
-                            <div class="vote-card">
-                                <div class="vote-card-header">
-                                    <span class="vote-category">Bugetare</span>
-                                    <span class="vote-deadline">
-                                        <i data-feather="clock"></i> Expiră în 12 zile
-                                    </span>
-                                </div>
-                                <h3>Bugetare participativă 2025</h3>
-                                <p>Votează proiectele propuse de cetățeni pentru bugetarea participativă din anul 2025.</p>
-                                <div class="vote-meta">
-                                    <span class="vote-participants">
-                                        <i data-feather="users"></i> 3,782 participanți
-                                    </span>
-                                    <span class="vote-points">
-                                        <i data-feather="award"></i> +20 puncte
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary btn-block vote-btn" data-vote-id="2">Votează acum</button>
-                            </div>
-
-                            <div class="vote-card">
-                                <div class="vote-card-header">
-                                    <span class="vote-category">Transport</span>
-                                    <span class="vote-deadline">
-                                        <i data-feather="clock"></i> Expiră în 8 zile
-                                    </span>
-                                </div>
-                                <h3>Extindere linii de transport public</h3>
-                                <p>Votează pentru noile trasee de transport public propuse pentru cartierele periferice.</p>
-                                <div class="vote-meta">
-                                    <span class="vote-participants">
-                                        <i data-feather="users"></i> 2,103 participanți
-                                    </span>
-                                    <span class="vote-points">
-                                        <i data-feather="award"></i> +15 puncte
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary btn-block vote-btn" data-vote-id="3">Votează acum</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- My Votes Tab -->
-                    <div class="tab-content" id="my-votes">
-                        <div class="vote-history">
-                            <div class="vote-history-item">
-                                <div class="vote-history-icon completed">
-                                    <i data-feather="check"></i>
-                                </div>
-                                <div class="vote-history-details">
-                                    <h4>Reabilitare fațade clădiri istorice</h4>
-                                    <p>Ai votat pentru: <strong>Opțiunea 2 - Reabilitare cu păstrarea elementelor originale</strong></p>
-                                    <div class="vote-history-meta">
-                                        <span class="vote-date">Votat pe: 10 Apr 2025</span>
-                                        <span class="vote-points earned">+15 puncte</span>
-                                    </div>
-                                </div>
-                                <div class="vote-history-status">
-                                    <span class="status-badge success">Finalizat</span>
-                                </div>
-                            </div>
-
-                            <div class="vote-history-item">
-                                <div class="vote-history-icon completed">
-                                    <i data-feather="check"></i>
-                                </div>
-                                <div class="vote-history-details">
-                                    <h4>Modernizare piață agroalimentară</h4>
-                                    <p>Ai votat pentru: <strong>Opțiunea 1 - Construcție nouă cu facilități moderne</strong></p>
-                                    <div class="vote-history-meta">
-                                        <span class="vote-date">Votat pe: 25 Mar 2025</span>
-                                        <span class="vote-points earned">+10 puncte</span>
-                                    </div>
-                                </div>
-                                <div class="vote-history-status">
-                                    <span class="status-badge success">Finalizat</span>
-                                </div>
-                            </div>
-
-                            <div class="vote-history-item">
-                                <div class="vote-history-icon in-progress">
-                                    <i data-feather="clock"></i>
-                                </div>
-                                <div class="vote-history-details">
-                                    <h4>Bugetare participativă 2025</h4>
-                                    <p>Ai votat pentru: <strong>Proiect 3 - Spații verzi între blocuri</strong></p>
-                                    <div class="vote-history-meta">
-                                        <span class="vote-date">Votat pe: 2 Mai 2025</span>
-                                        <span class="vote-points pending">Puncte în așteptare</span>
-                                    </div>
-                                </div>
-                                <div class="vote-history-status">
-                                    <span class="status-badge warning">În desfășurare</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Past Votes Tab -->
-                    <div class="tab-content" id="past-votes">
-                        <div class="vote-cards">
-                            <div class="vote-card past">
-                                <div class="vote-card-header">
-                                    <span class="vote-category">Urbanism</span>
-                                    <span class="vote-result success">
-                                        <i data-feather="check-circle"></i> Aprobat
-                                    </span>
-                                </div>
-                                <h3>Reabilitare fațade clădiri istorice</h3>
-                                <p>Inițiativă pentru reabilitarea fațadelor clădirilor istorice din centrul orașului.</p>
-                                <div class="vote-results-bar">
-                                    <div class="vote-option">
-                                        <div class="option-label">Opțiunea 1 - Reabilitare minimală</div>
-                                        <div class="progress-bar">
-                                            <div class="progress" style="width: 25%"></div>
-                                        </div>
-                                        <div class="option-percentage">25%</div>
-                                    </div>
-                                    <div class="vote-option">
-                                        <div class="option-label">Opțiunea 2 - Reabilitare cu păstrarea elementelor originale</div>
-                                        <div class="progress-bar">
-                                            <div class="progress" style="width: 65%"></div>
-                                        </div>
-                                        <div class="option-percentage">65%</div>
-                                    </div>
-                                    <div class="vote-option">
-                                        <div class="option-label">Opțiunea 3 - Reabilitare completă</div>
-                                        <div class="progress-bar">
-                                            <div class="progress" style="width: 10%"></div>
-                                        </div>
-                                        <div class="option-percentage">10%</div>
-                                    </div>
-                                </div>
-                                <div class="vote-meta">
-                                    <span class="vote-participants">
-                                        <i data-feather="users"></i> 3,542 participanți
-                                    </span>
-                                    <span class="vote-date">
-                                        <i data-feather="calendar"></i> Încheiat pe 15 Apr 2025
-                                    </span>
-                                </div>
-                                <button class="btn btn-outline-primary btn-block">Vezi detalii</button>
-                            </div>
-
-                            <div class="vote-card past">
-                                <div class="vote-card-header">
-                                    <span class="vote-category">Infrastructură</span>
-                                    <span class="vote-result success">
-                                        <i data-feather="check-circle"></i> Aprobat
-                                    </span>
-                                </div>
-                                <h3>Modernizare piață agroalimentară</h3>
-                                <p>Inițiativă pentru modernizarea pieței agroalimentare din cartierul Mănăștur.</p>
-                                <div class="vote-results-bar">
-                                    <div class="vote-option">
-                                        <div class="option-label">Opțiunea 1 - Construcție nouă cu facilități moderne</div>
-                                        <div class="progress-bar">
-                                            <div class="progress" style="width: 72%"></div>
-                                        </div>
-                                        <div class="option-percentage">72%</div>
-                                    </div>
-                                    <div class="vote-option">
-                                        <div class="option-label">Opțiunea 2 - Renovare structură existentă</div>
-                                        <div class="progress-bar">
-                                            <div class="progress" style="width: 28%"></div>
-                                        </div>
-                                        <div class="option-percentage">28%</div>
-                                    </div>
-                                </div>
-                                <div class="vote-meta">
-                                    <span class="vote-participants">
-                                        <i data-feather="users"></i> 2,187 participanți
-                                    </span>
-                                    <span class="vote-date">
-                                        <i data-feather="calendar"></i> Încheiat pe 30 Mar 2025
-                                    </span>
-                                </div>
-                                <button class="btn btn-outline-primary btn-block">Vezi detalii</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Voting Form Modal -->
-            <div class="modal" id="voting-modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 id="modal-title">Formular de vot</h2>
-                        <button class="close-modal" id="close-modal">
-                            <i data-feather="x"></i>
+                    <div class="user-dropdown-footer">
+                        <button>
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Sign Out</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <div class="vote-form-container" id="vote-form-container">
-                            <!-- Vote Form 1 - Park Design -->
-                            <form class="vote-form" id="vote-form-1">
-                                <div class="vote-form-header">
-                                    <h3>Amenajare parc în cartierul Mărăști</h3>
-                                    <p>Alege una dintre cele trei propuneri de amenajare a parcului din cartierul Mărăști.</p>
-                                </div>
-                                
-                                <div class="vote-options">
-                                    <div class="vote-option-card">
-                                        <input type="radio" name="park-option" id="park-option-1" value="1" class="vote-radio">
-                                        <label for="park-option-1" class="vote-option-label">
-                                            <div class="vote-option-image">
-                                                <img src="https://via.placeholder.com/300x200" alt="Propunere 1">
-                                            </div>
-                                            <div class="vote-option-content">
-                                                <h4>Propunerea 1: Parc Natural</h4>
-                                                <p>Un parc cu accent pe spații verzi, trasee naturale și zone de relaxare în mijlocul naturii.</p>
-                                                <ul class="vote-option-features">
-                                                    <li><i data-feather="check"></i> Spații verzi extinse</li>
-                                                    <li><i data-feather="check"></i> Trasee pentru plimbare</li>
-                                                    <li><i data-feather="check"></i> Zone de picnic</li>
-                                                    <li><i data-feather="check"></i> Lac artificial</li>
-                                                </ul>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    
-                                    <div class="vote-option-card">
-                                        <input type="radio" name="park-option" id="park-option-2" value="2" class="vote-radio">
-                                        <label for="park-option-2" class="vote-option-label">
-                                            <div class="vote-option-image">
-                                                <img src="https://via.placeholder.com/300x200" alt="Propunere 2">
-                                            </div>
-                                            <div class="vote-option-content">
-                                                <h4>Propunerea 2: Parc Recreativ</h4>
-                                                <p>Un parc cu accent pe activități recreative pentru toate vârstele, cu zone de joacă și sport.</p>
-                                                <ul class="vote-option-features">
-                                                    <li><i data-feather="check"></i> Terenuri de sport</li>
-                                                    <li><i data-feather="check"></i> Locuri de joacă pentru copii</li>
-                                                    <li><i data-feather="check"></i> Piste pentru biciclete</li>
-                                                    <li><i data-feather="check"></i> Zone de fitness în aer liber</li>
-                                                </ul>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    
-                                    <div class="vote-option-card">
-                                        <input type="radio" name="park-option" id="park-option-3" value="3" class="vote-radio">
-                                        <label for="park-option-3" class="vote-option-label">
-                                            <div class="vote-option-image">
-                                                <img src="https://via.placeholder.com/300x200" alt="Propunere 3">
-                                            </div>
-                                            <div class="vote-option-content">
-                                                <h4>Propunerea 3: Parc Cultural</h4>
-                                                <p>Un parc cu accent pe evenimente culturale, cu amfiteatru în aer liber și zone de expoziție.</p>
-                                                <ul class="vote-option-features">
-                                                    <li><i data-feather="check"></i> Amfiteatru în aer liber</li>
-                                                    <li><i data-feather="check"></i> Zone pentru expoziții</li>
-                                                    <li><i data-feather="check"></i> Spații pentru artiști stradali</li>
-                                                    <li><i data-feather="check"></i> Cafenele și zone de relaxare</li>
-                                                </ul>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                                
-                                <div class="vote-form-footer">
-                                    <p class="vote-disclaimer">Votul tău este anonim și securizat. Poți vota o singură dată pentru această inițiativă.</p>
-                                    <div class="vote-actions">
-                                        <button type="button" class="btn btn-outline-primary" id="cancel-vote">Anulează</button>
-                                        <button type="submit" class="btn btn-primary" id="submit-vote">Trimite votul</button>
-                                    </div>
-                                </div>
-                            </form>
+                </div>
+            </div>
+        </div>
+    </header>
 
-                            <!-- Vote Form 2 - Participatory Budgeting -->
-                            <form class="vote-form" id="vote-form-2" style="display: none;">
-                                <div class="vote-form-header">
-                                    <h3>Bugetare participativă 2025</h3>
-                                    <p>Alege proiectele pe care dorești să le susții pentru bugetarea participativă din anul 2025. Poți alege maximum 3 proiecte.</p>
-                                </div>
-                                
-                                <div class="vote-options">
-                                    <div class="vote-option-card checkbox">
-                                        <input type="checkbox" name="budget-option" id="budget-option-1" value="1" class="vote-checkbox">
-                                        <label for="budget-option-1" class="vote-option-label">
-                                            <div class="vote-option-content">
-                                                <h4>Proiect 1: Modernizare parcuri de joacă</h4>
-                                                <p>Modernizarea a 5 parcuri de joacă din oraș cu echipamente noi și sigure pentru copii.</p>
-                                                <div class="budget-info">
-                                                    <span class="budget-amount">Buget estimat: 250.000 lei</span>
-                                                    <span class="budget-category">Categorie: Infrastructură pentru copii</span>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    
-                                    <div class="vote-option-card checkbox">
-                                        <input type="checkbox" name="budget-option" id="budget-option-2" value="2" class="vote-checkbox">
-                                        <label for="budget-option-2" class="vote-option-label">
-                                            <div class="vote-option-content">
-                                                <h4>Proiect 2: Piste pentru biciclete</h4>
-                                                <p>Construirea a 10 km de piste pentru biciclete care să conecteze cartierele orașului.</p>
-                                                <div class="budget-info">
-                                                    <span class="budget-amount">Buget estimat: 500.000 lei</span>
-                                                    <span class="budget-category">Categorie: Mobilitate urbană</span>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    
-                                    <div class="vote-option-card checkbox">
-                                        <input type="checkbox" name="budget-option" id="budget-option-3" value="3" class="vote-checkbox">
-                                        <label for="budget-option-3" class="vote-option-label">
-                                            <div class="vote-option-content">
-                                                <h4>Proiect 3: Spații verzi între blocuri</h4>
-                                                <p>Amenajarea spațiilor verzi dintre blocuri cu plante, flori și mobilier urban.</p>
-                                                <div class="budget-info">
-                                                    <span class="budget-amount">Buget estimat: 300.000 lei</span>
-                                                    <span class="budget-category">Categorie: Spații verzi</span>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    
-                                    <div class="vote-option-card checkbox">
-                                        <input type="checkbox" name="budget-option" id="budget-option-4" value="4" class="vote-checkbox">
-                                        <label for="budget-option-4" class="vote-option-label">
-                                            <div class="vote-option-content">
-                                                <h4>Proiect 4: Iluminat public inteligent</h4>
-                                                <p>Implementarea unui sistem de iluminat public inteligent în zonele centrale ale orașului.</p>
-                                                <div class="budget-info">
-                                                    <span class="budget-amount">Buget estimat: 450.000 lei</span>
-                                                    <span class="budget-category">Categorie: Smart City</span>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    
-                                    <div class="vote-option-card checkbox">
-                                        <input type="checkbox" name="budget-option" id="budget-option-5" value="5" class="vote-checkbox">
-                                        <label for="budget-option-5" class="vote-option-label">
-                                            <div class="vote-option-content">
-                                                <h4>Proiect 5: Centru comunitar</h4>
-                                                <p>Renovarea și transformarea unei clădiri abandonate într-un centru comunitar pentru activități sociale.</p>
-                                                <div class="budget-info">
-                                                    <span class="budget-amount">Buget estimat: 600.000 lei</span>
-                                                    <span class="budget-category">Categorie: Infrastructură socială</span>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                                
-                                <div class="vote-form-footer">
-                                    <p class="vote-disclaimer">Poți selecta maximum 3 proiecte. Bugetul total disponibil este de 1.000.000 lei.</p>
-                                    <div class="vote-selection-counter">
-                                        <span id="selected-count">0</span> din 3 proiecte selectate
-                                    </div>
-                                    <div class="vote-actions">
-                                        <button type="button" class="btn btn-outline-primary" id="cancel-vote-2">Anulează</button>
-                                        <button type="submit" class="btn btn-primary" id="submit-vote-2">Trimite votul</button>
-                                    </div>
-                                </div>
-                            </form>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="nav-section">
+            <div class="nav-section-title">Main</div>
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Documents</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Calendar</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Statistics</span>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Participation</div>
+            <ul class="nav-items">
+                <li class="nav-item active">
+                    <i class="fas fa-vote-yea"></i>
+                    <span>Voting</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-comment-alt"></i>
+                    <span>Feedback</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-poll"></i>
+                    <span>Surveys</span>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Services</div>
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <i class="fas fa-id-card"></i>
+                    <span>ID Services</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-car"></i>
+                    <span>Vehicle Registration</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Property Records</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Education</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Healthcare</span>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-                            <!-- Vote Form 3 - Public Transport -->
-                            <form class="vote-form" id="vote-form-3" style="display: none;">
-                                <div class="vote-form-header">
-                                    <h3>Extindere linii de transport public</h3>
-                                    <p>Votează pentru noile trasee de transport public propuse pentru cartierele periferice.</p>
-                                </div>
-                                
-                                <div class="vote-options">
-                                    <div class="vote-option-card">
-                                        <input type="radio" name="transport-option" id="transport-option-1" value="1" class="vote-radio">
-                                        <label for="transport-option-1" class="vote-option-label">
-                                            <div class="vote-option-image">
-                                                <img src="https://via.placeholder.com/300x200" alt="Traseu 1">
-                                            </div>
-                                            <div class="vote-option-content">
-                                                <h4>Traseu 1: Extindere Est</h4>
-                                                <p>Extinderea liniilor de autobuz către cartierele din zona estică a orașului.</p>
-                                                <ul class="vote-option-features">
-                                                    <li><i data-feather="check"></i> 3 linii noi de autobuz</li>
-                                                    <li><i data-feather="check"></i> 12 stații noi</li>
-                                                    <li><i data-feather="check"></i> Frecvență: 15 minute</li>
-                                                </ul>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    
-                                    <div class="vote-option-card">
-                                        <input type="radio" name="transport-option" id="transport-option-2" value="2" class="vote-radio">
-                                        <label for="transport-option-2" class="vote-option-label">
-                                            <div class="vote-option-image">
-                                                <img src="https://via.placeholder.com/300x200" alt="Traseu 2">
-                                            </div>
-                                            <div class="vote-option-content">
-                                                <h4>Traseu 2: Extindere Vest</h4>
-                                                <p>Extinderea liniilor de autobuz și tramvai către cartierele din zona vestică a orașului.</p>
-                                                <ul class="vote-option-features">
-                                                    <li><i data-feather="check"></i> 2 linii noi de autobuz</li>
-                                                    <li><i data-feather="check"></i> 1 linie nouă de tramvai</li>
-                                                    <li><i data-feather="check"></i> 15 stații noi</li>
-                                                    <li><i data-feather="check"></i> Frecvență: 10 minute</li>
-                                                </ul>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                                
-                                <div class="vote-form-footer">
-                                    <p class="vote-disclaimer">Votul tău este anonim și securizat. Poți vota o singură dată pentru această inițiativă.</p>
-                                    <div class="vote-actions">
-                                        <button type="button" class="btn btn-outline-primary" id="cancel-vote-3">Anulează</button>
-                                        <button type="submit" class="btn btn-primary" id="submit-vote-3">Trimite votul</button>
-                                    </div>
-                                </div>
-                            </form>
+    <!-- Sidebar Toggle Button -->
+    <div class="sidebar-toggle" id="sidebar-toggle">
+        <i class="fas fa-bars" id="sidebar-icon"></i>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <h1 class="page-title">Community Voting</h1>
+
+        <!-- Dashboard Stats -->
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Active Initiatives</div>
+                    <div class="stat-icon blue">
+                        <i class="fas fa-vote-yea"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="active-initiatives">3</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Your Votes</div>
+                    <div class="stat-icon light-blue">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="your-votes">5</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Participants</div>
+                    <div class="stat-icon green">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="participants">12,458</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Points Earned</div>
+                    <div class="stat-icon orange">
+                        <i class="fas fa-award"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="points-earned-total">50</div>
+            </div>
+        </div>
+
+        <!-- Voting Tabs -->
+        <div class="widget">
+            <div class="widget-header">
+                <div class="widget-title">Voting Initiatives</div>
+                <div class="widget-actions">
+                    <button class="widget-action active" data-tab="active-votes">Active</button>
+                    <button class="widget-action" data-tab="my-votes">My Votes</button>
+                    <button class="widget-action" data-tab="past-votes">Completed</button>
+                </div>
+            </div>
+            
+            <div class="widget-content">
+                <!-- Active Votes Tab -->
+                <div class="tab-content active" id="active-votes">
+                    <div class="vote-cards">
+                        <div class="vote-card">
+                            <div class="vote-card-header">
+                                <span class="vote-category">Urban Planning</span>
+                                <span class="vote-deadline">
+                                    <i class="fas fa-clock"></i> Expires in 5 days
+                                </span>
+                            </div>
+                            <h3>Park Design in Mărăști District</h3>
+                            <p>Vote for one of the three proposals for the new park design in the Mărăști district.</p>
+                            <div class="vote-meta">
+                                <span class="vote-participants">
+                                    <i class="fas fa-users"></i> 1,245 participants
+                                </span>
+                                <span class="vote-points">
+                                    <i class="fas fa-award"></i> +15 points
+                                </span>
+                            </div>
+                            <button class="btn primary vote-btn" data-vote-id="1">Vote Now</button>
                         </div>
 
-                        <!-- Vote Success Message -->
-                        <div class="vote-success" id="vote-success" style="display: none;">
-                            <div class="success-icon">
-                                <i data-feather="check-circle"></i>
+                        <div class="vote-card">
+                            <div class="vote-card-header">
+                                <span class="vote-category">Budget</span>
+                                <span class="vote-deadline">
+                                    <i class="fas fa-clock"></i> Expires in 12 days
+                                </span>
                             </div>
-                            <h3>Votul tău a fost înregistrat cu succes!</h3>
-                            <p>Îți mulțumim pentru participare. Ai primit <span id="points-earned">15</span> puncte pentru votul tău.</p>
-                            <p>Rezultatele vor fi disponibile după încheierea perioadei de votare.</p>
-                            <button class="btn btn-primary" id="close-success">Închide</button>
+                            <h3>Participatory Budgeting 2025</h3>
+                            <p>Vote for citizen-proposed projects for the 2025 participatory budget allocation.</p>
+                            <div class="vote-meta">
+                                <span class="vote-participants">
+                                    <i class="fas fa-users"></i> 3,782 participants
+                                </span>
+                                <span class="vote-points">
+                                    <i class="fas fa-award"></i> +20 points
+                                </span>
+                            </div>
+                            <button class="btn primary vote-btn" data-vote-id="2">Vote Now</button>
+                        </div>
+
+                        <div class="vote-card">
+                            <div class="vote-card-header">
+                                <span class="vote-category">Transportation</span>
+                                <span class="vote-deadline">
+                                    <i class="fas fa-clock"></i> Expires in 8 days
+                                </span>
+                            </div>
+                            <h3>Public Transport Line Extension</h3>
+                            <p>Vote for the new public transport routes proposed for the suburban areas.</p>
+                            <div class="vote-meta">
+                                <span class="vote-participants">
+                                    <i class="fas fa-users"></i> 2,103 participants
+                                </span>
+                                <span class="vote-points">
+                                    <i class="fas fa-award"></i> +15 points
+                                </span>
+                            </div>
+                            <button class="btn primary vote-btn" data-vote-id="3">Vote Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Votes Tab -->
+                <div class="tab-content" id="my-votes">
+                    <div class="activity-table-container">
+                        <table class="activity-table">
+                            <thead>
+                                <tr>
+                                    <th>Initiative</th>
+                                    <th>Your Vote</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Historic Building Facades Renovation</td>
+                                    <td>Option 2 - Renovation with original elements preservation</td>
+                                    <td>Apr 10, 2025</td>
+                                    <td><span class="status-badge completed">Completed</span></td>
+                                    <td><span class="points-badge">+15</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Farmers Market Modernization</td>
+                                    <td>Option 1 - New construction with modern facilities</td>
+                                    <td>Mar 25, 2025</td>
+                                    <td><span class="status-badge completed">Completed</span></td>
+                                    <td><span class="points-badge">+10</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Participatory Budgeting 2025</td>
+                                    <td>Project 3 - Green spaces between buildings</td>
+                                    <td>May 2, 2025</td>
+                                    <td><span class="status-badge processing">In Progress</span></td>
+                                    <td><span class="points-badge pending">Pending</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Past Votes Tab -->
+                <div class="tab-content" id="past-votes">
+                    <div class="vote-cards">
+                        <div class="vote-card past">
+                            <div class="vote-card-header">
+                                <span class="vote-category">Urban Planning</span>
+                                <span class="vote-result success">
+                                    <i class="fas fa-check-circle"></i> Approved
+                                </span>
+                            </div>
+                            <h3>Historic Building Facades Renovation</h3>
+                            <p>Initiative for the renovation of historic building facades in the city center.</p>
+                            
+                            <div class="vote-results">
+                                <div class="vote-result-item">
+                                    <div class="vote-result-label">
+                                        <span>Option 1 - Minimal renovation</span>
+                                        <span>25%</span>
+                                    </div>
+                                    <div class="vote-result-bar">
+                                        <div class="vote-result-progress" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                                <div class="vote-result-item">
+                                    <div class="vote-result-label">
+                                        <span>Option 2 - Renovation with original elements preservation</span>
+                                        <span>65%</span>
+                                    </div>
+                                    <div class="vote-result-bar">
+                                        <div class="vote-result-progress" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                                <div class="vote-result-item">
+                                    <div class="vote-result-label">
+                                        <span>Option 3 - Complete renovation</span>
+                                        <span>10%</span>
+                                    </div>
+                                    <div class="vote-result-bar">
+                                        <div class="vote-result-progress" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="vote-meta">
+                                <span class="vote-participants">
+                                    <i class="fas fa-users"></i> 3,542 participants
+                                </span>
+                                <span class="vote-date">
+                                    <i class="fas fa-calendar-alt"></i> Completed on Apr 15, 2025
+                                </span>
+                            </div>
+                            <button class="btn secondary">View Details</button>
+                        </div>
+
+                        <div class="vote-card past">
+                            <div class="vote-card-header">
+                                <span class="vote-category">Infrastructure</span>
+                                <span class="vote-result success">
+                                    <i class="fas fa-check-circle"></i> Approved
+                                </span>
+                            </div>
+                            <h3>Farmers Market Modernization</h3>
+                            <p>Initiative for the modernization of the farmers market in the Mănăștur district.</p>
+                            
+                            <div class="vote-results">
+                                <div class="vote-result-item">
+                                    <div class="vote-result-label">
+                                        <span>Option 1 - New construction with modern facilities</span>
+                                        <span>72%</span>
+                                    </div>
+                                    <div class="vote-result-bar">
+                                        <div class="vote-result-progress" style="width: 72%"></div>
+                                    </div>
+                                </div>
+                                <div class="vote-result-item">
+                                    <div class="vote-result-label">
+                                        <span>Option 2 - Renovation of existing structure</span>
+                                        <span>28%</span>
+                                    </div>
+                                    <div class="vote-result-bar">
+                                        <div class="vote-result-progress" style="width: 28%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="vote-meta">
+                                <span class="vote-participants">
+                                    <i class="fas fa-users"></i> 2,187 participants
+                                </span>
+                                <span class="vote-date">
+                                    <i class="fas fa-calendar-alt"></i> Completed on Mar 30, 2025
+                                </span>
+                            </div>
+                            <button class="btn secondary">View Details</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Footer -->
-            <footer class="dashboard-footer">
-                <p>&copy; <span id="current-year"></span> AdminPublic. Toate drepturile rezervate.</p>
-                <div class="footer-links">
-                    <a href="#">Termeni și condiții</a>
-                    <a href="#">Politica de confidențialitate</a>
-                    <a href="#">Ajutor</a>
+    </main>
+    
+    <!-- Voting Form Modal -->
+    <div class="modal" id="voting-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Voting Form</h2>
+                <button class="close-modal" id="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="vote-form-container" id="vote-form-container">
+                    <!-- Vote Form 1 - Park Design -->
+                    <form class="vote-form" id="vote-form-1">
+                        <div class="vote-form-header">
+                            <h3>Park Design in Mărăști District</h3>
+                            <p>Choose one of the three proposals for the new park design in the Mărăști district.</p>
+                        </div>
+                        
+                        <div class="vote-options">
+                            <div class="vote-option-card">
+                                <input type="radio" name="park-option" id="park-option-1" value="1" class="vote-radio">
+                                <label for="park-option-1" class="vote-option-label">
+                                    <div class="vote-option-image">
+                                        <img src="https://via.placeholder.com/300x200" alt="Proposal 1">
+                                    </div>
+                                    <div class="vote-option-content">
+                                        <h4>Proposal 1: Natural Park</h4>
+                                        <p>A park with emphasis on green spaces, natural trails, and relaxation areas in the midst of nature.</p>
+                                        <ul class="vote-option-features">
+                                            <li><i class="fas fa-check"></i> Extensive green spaces</li>
+                                            <li><i class="fas fa-check"></i> Walking trails</li>
+                                            <li><i class="fas fa-check"></i> Picnic areas</li>
+                                            <li><i class="fas fa-check"></i> Artificial lake</li>
+                                        </ul>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="vote-option-card">
+                                <input type="radio" name="park-option" id="park-option-2" value="2" class="vote-radio">
+                                <label for="park-option-2" class="vote-option-label">
+                                    <div class="vote-option-image">
+                                        <img src="https://via.placeholder.com/300x200" alt="Proposal 2">
+                                    </div>
+                                    <div class="vote-option-content">
+                                        <h4>Proposal 2: Recreational Park</h4>
+                                        <p>A park with emphasis on recreational activities for all ages, with play areas and sports facilities.</p>
+                                        <ul class="vote-option-features">
+                                            <li><i class="fas fa-check"></i> Sports fields</li>
+                                            <li><i class="fas fa-check"></i> Children's playgrounds</li>
+                                            <li><i class="fas fa-check"></i> Bike paths</li>
+                                            <li><i class="fas fa-check"></i> Outdoor fitness areas</li>
+                                        </ul>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="vote-option-card">
+                                <input type="radio" name="park-option" id="park-option-3" value="3" class="vote-radio">
+                                <label for="park-option-3" class="vote-option-label">
+                                    <div class="vote-option-image">
+                                        <img src="https://via.placeholder.com/300x200" alt="Proposal 3">
+                                    </div>
+                                    <div class="vote-option-content">
+                                        <h4>Proposal 3: Cultural Park</h4>
+                                        <p>A park with emphasis on cultural events, with an outdoor amphitheater and exhibition areas.</p>
+                                        <ul class="vote-option-features">
+                                            <li><i class="fas fa-check"></i> Outdoor amphitheater</li>
+                                            <li><i class="fas fa-check"></i> Exhibition areas</li>
+                                            <li><i class="fas fa-check"></i> Street artist spaces</li>
+                                            <li><i class="fas fa-check"></i> Cafes and relaxation areas</li>
+                                        </ul>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="vote-form-footer">
+                            <p class="vote-disclaimer">Your vote is anonymous and secure. You can vote only once for this initiative.</p>
+                            <div class="vote-actions">
+                                <button type="button" class="btn secondary" id="cancel-vote">Cancel</button>
+                                <button type="submit" class="btn primary" id="submit-vote">Submit Vote</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Vote Form 2 - Participatory Budgeting -->
+                    <form class="vote-form" id="vote-form-2" style="display: none;">
+                        <div class="vote-form-header">
+                            <h3>Participatory Budgeting 2025</h3>
+                            <p>Choose the projects you want to support for the 2025 participatory budget. You can choose up to 3 projects.</p>
+                        </div>
+                        
+                        <div class="vote-options">
+                            <div class="vote-option-card checkbox">
+                                <input type="checkbox" name="budget-option" id="budget-option-1" value="1" class="vote-checkbox">
+                                <label for="budget-option-1" class="vote-option-label">
+                                    <div class="vote-option-content">
+                                        <h4>Project 1: Playground Modernization</h4>
+                                        <p>Modernization of 5 playgrounds in the city with new and safe equipment for children.</p>
+                                        <div class="budget-info">
+                                            <span class="budget-amount">Estimated budget: 250,000 lei</span>
+                                            <span class="budget-category">Category: Children's Infrastructure</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="vote-option-card checkbox">
+                                <input type="checkbox" name="budget-option" id="budget-option-2" value="2" class="vote-checkbox">
+                                <label for="budget-option-2" class="vote-option-label">
+                                    <div class="vote-option-content">
+                                        <h4>Project 2: Bike Lanes</h4>
+                                        <p>Construction of 10 km of bike lanes connecting the city's neighborhoods.</p>
+                                        <div class="budget-info">
+                                            <span class="budget-amount">Estimated budget: 500,000 lei</span>
+                                            <span class="budget-category">Category: Urban Mobility</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="vote-option-card checkbox">
+                                <input type="checkbox" name="budget-option" id="budget-option-3" value="3" class="vote-checkbox">
+                                <label for="budget-option-3" class="vote-option-label">
+                                    <div class="vote-option-content">
+                                        <h4>Project 3: Green Spaces Between Buildings</h4>
+                                        <p>Landscaping of green spaces between buildings with plants, flowers, and urban furniture.</p>
+                                        <div class="budget-info">
+                                            <span class="budget-amount">Estimated budget: 300,000 lei</span>
+                                            <span class="budget-category">Category: Green Spaces</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="vote-option-card checkbox">
+                                <input type="checkbox" name="budget-option" id="budget-option-4" value="4" class="vote-checkbox">
+                                <label for="budget-option-4" class="vote-option-label">
+                                    <div class="vote-option-content">
+                                        <h4>Project 4: Smart Public Lighting</h4>
+                                        <p>Implementation of a smart public lighting system in the central areas of the city.</p>
+                                        <div class="budget-info">
+                                            <span class="budget-amount">Estimated budget: 450,000 lei</span>
+                                            <span class="budget-category">Category: Smart City</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="vote-option-card checkbox">
+                                <input type="checkbox" name="budget-option" id="budget-option-5" value="5" class="vote-checkbox">
+                                <label for="budget-option-5" class="vote-option-label">
+                                    <div class="vote-option-content">
+                                        <h4>Project 5: Community Center</h4>
+                                        <p>Renovation and transformation of an abandoned building into a community center for social activities.</p>
+                                        <div class="budget-info">
+                                            <span class="budget-amount">Estimated budget: 600,000 lei</span>
+                                            <span class="budget-category">Category: Social Infrastructure</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="vote-form-footer">
+                            <p class="vote-disclaimer">You can select up to 3 projects. The total available budget is 1,000,000 lei.</p>
+                            <div class="vote-selection-counter">
+                                <span id="selected-count">0</span> of 3 projects selected
+                            </div>
+                            <div class="vote-actions">
+                                <button type="button" class="btn secondary" id="cancel-vote-2">Cancel</button>
+                                <button type="submit" class="btn primary" id="submit-vote-2">Submit Vote</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Vote Form 3 - Public Transport -->
+                    <form class="vote-form" id="vote-form-3" style="display: none;">
+                        <div class="vote-form-header">
+                            <h3>Public Transport Line Extension</h3>
+                            <p>Vote for the new public transport routes proposed for the suburban areas.</p>
+                        </div>
+                        
+                        <div class="vote-options">
+                            <div class="vote-option-card">
+                                <input type="radio" name="transport-option" id="transport-option-1" value="1" class="vote-radio">
+                                <label for="transport-option-1" class="vote-option-label">
+                                    <div class="vote-option-image">
+                                        <img src="https://via.placeholder.com/300x200" alt="Route 1">
+                                    </div>
+                                    <div class="vote-option-content">
+                                        <h4>Route 1: Eastern Extension</h4>
+                                        <p>Extension of bus lines to the eastern neighborhoods of the city.</p>
+                                        <ul class="vote-option-features">
+                                            <li><i class="fas fa-check"></i> 3 new bus lines</li>
+                                            <li><i class="fas fa-check"></i> 12 new stations</li>
+                                            <li><i class="fas fa-check"></i> Frequency: 15 minutes</li>
+                                        </ul>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="vote-option-card">
+                                <input type="radio" name="transport-option" id="transport-option-2" value="2" class="vote-radio">
+                                <label for="transport-option-2" class="vote-option-label">
+                                    <div class="vote-option-image">
+                                        <img src="https://via.placeholder.com/300x200" alt="Route 2">
+                                    </div>
+                                    <div class="vote-option-content">
+                                        <h4>Route 2: Western Extension</h4>
+                                        <p>Extension of bus and tram lines to the western neighborhoods of the city.</p>
+                                        <ul class="vote-option-features">
+                                            <li><i class="fas fa-check"></i> 2 new bus lines</li>
+                                            <li><i class="fas fa-check"></i> 1 new tram line</li>
+                                            <li><i class="fas fa-check"></i> 15 new stations</li>
+                                            <li><i class="fas fa-check"></i> Frequency: 10 minutes</li>
+                                        </ul>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="vote-form-footer">
+                            <p class="vote-disclaimer">Your vote is anonymous and secure. You can vote only once for this initiative.</p>
+                            <div class="vote-actions">
+                                <button type="button" class="btn secondary" id="cancel-vote-3">Cancel</button>
+                                <button type="submit" class="btn primary" id="submit-vote-3">Submit Vote</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </footer>
-        </main>
-            
+
+                <!-- Vote Success Message -->
+                <div class="vote-success" id="vote-success" style="display: none;">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Your vote has been successfully recorded!</h3>
+                    <p>Thank you for your participation. You have received <span id="points-earned">15</span> points for your vote.</p>
+                    <p>Results will be available after the voting period ends.</p>
+                    <button class="btn primary" id="close-success">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script src="./js/voting.js"></script>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <div class="theme-option admin active" id="admin-theme">
+            <i class="fas fa-user-shield"></i>
+        </div>
+        <div class="theme-option user" id="user-theme">
+            <i class="fas fa-user"></i>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Sidebar Toggle Functionality
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebarIcon = document.getElementById('sidebar-icon');
+        const mainContent = document.getElementById('main-content');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            sidebarToggle.classList.toggle('collapsed');
+            mainContent.classList.toggle('expanded');
+            
+            // Change icon based on sidebar state
+            if (sidebar.classList.contains('collapsed')) {
+                sidebarIcon.classList.remove('fa-bars');
+                sidebarIcon.classList.add('fa-chevron-right');
+            } else {
+                sidebarIcon.classList.remove('fa-chevron-right');
+                sidebarIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Responsive behavior for mobile
+        function checkScreenSize() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.add('collapsed');
+                sidebarToggle.classList.add('collapsed');
+                mainContent.classList.add('expanded');
+                sidebarIcon.classList.remove('fa-bars');
+                sidebarIcon.classList.add('fa-chevron-right');
+            } else {
+                sidebar.classList.remove('collapsed');
+                sidebarToggle.classList.remove('collapsed');
+                mainContent.classList.remove('expanded');
+                sidebarIcon.classList.remove('fa-chevron-right');
+                sidebarIcon.classList.add('fa-bars');
+            }
+        }
+
+        // Check on load
+        checkScreenSize();
+        
+        // Check on resize
+        window.addEventListener('resize', checkScreenSize);
+
+        // Notification Dropdown
+        const notificationToggle = document.getElementById('notification-toggle');
+        const notificationDropdown = document.getElementById('notification-dropdown');
+
+        notificationToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            notificationDropdown.classList.toggle('show');
+            
+            // Hide user dropdown if open
+            userDropdown.classList.remove('show');
+        });
+        
+        // User Dropdown
+        const userMenuToggle = document.getElementById('user-menu-toggle');
+        const userDropdown = document.getElementById('user-dropdown');
+        
+        userMenuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userDropdown.classList.toggle('show');
+            
+            // Hide notification dropdown if open
+            notificationDropdown.classList.remove('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!notificationToggle.contains(e.target) && !notificationDropdown.contains(e.target)) {
+                notificationDropdown.classList.remove('show');
+            }
+            
+            if (!userMenuToggle.contains(e.target) && !userDropdown.contains(e.target)) {
+                userDropdown.classList.remove('show');
+            }
+        });
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.widget-action[data-tab]');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('voting-modal');
+        const closeModal = document.getElementById('close-modal');
+        const voteButtons = document.querySelectorAll('.vote-btn');
+
+        // Open modal when vote button is clicked
+        voteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const voteId = this.getAttribute('data-vote-id');
+                openVoteForm(voteId);
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Function to open specific vote form
+        function openVoteForm(voteId) {
+            // Hide all forms
+            document.querySelectorAll('.vote-form').forEach(form => {
+                form.style.display = 'none';
+            });
+            
+            // Show success message
+            document.getElementById('vote-success').style.display = 'none';
+            
+            // Show selected form
+            document.getElementById(`vote-form-${voteId}`).style.display = 'block';
+            
+            // Update modal title based on vote
+            const voteTitle = document.querySelector(`[data-vote-id="${voteId}"]`).closest('.vote-card').querySelector('h3').textContent;
+            document.getElementById('modal-title').textContent = `Vote: ${voteTitle}`;
+        }
+
+        // Handle vote form submissions
+        const voteForms = document.querySelectorAll('.vote-form');
+        
+        voteForms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show success message
+                document.getElementById('vote-form-container').style.display = 'none';
+                document.getElementById('vote-success').style.display = 'block';
+                
+                // Update points based on vote
+                const formId = this.id;
+                let points = 15; // Default
+                
+                if (formId === 'vote-form-2') {
+                    points = 20;
+                }
+                
+                document.getElementById('points-earned').textContent = points;
+                
+                // Reset form
+                this.reset();
+            });
+        });
+
+        // Handle cancel buttons
+        const cancelButtons = document.querySelectorAll('[id^="cancel-vote"]');
+        
+        cancelButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Handle close success button
+        document.getElementById('close-success').addEventListener('click', () => {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+            
+            // Reset view for next time
+            setTimeout(() => {
+                document.getElementById('vote-form-container').style.display = 'block';
+                document.getElementById('vote-success').style.display = 'none';
+            }, 300);
+        });
+
+        // Handle checkbox selection limit for budget voting
+        const budgetCheckboxes = document.querySelectorAll('input[name="budget-option"]');
+        const selectedCountElement = document.getElementById('selected-count');
+        const maxSelections = 3;
+        
+        budgetCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const checkedBoxes = document.querySelectorAll('input[name="budget-option"]:checked');
+                
+                // Update counter
+                selectedCountElement.textContent = checkedBoxes.length;
+                
+                // Disable unchecked checkboxes if max reached
+                if (checkedBoxes.length >= maxSelections) {
+                    budgetCheckboxes.forEach(box => {
+                        if (!box.checked) {
+                            box.disabled = true;
+                            box.parentElement.classList.add('disabled');
+                        }
+                    });
+                } else {
+                    // Enable all checkboxes
+                    budgetCheckboxes.forEach(box => {
+                        box.disabled = false;
+                        box.parentElement.classList.remove('disabled');
+                    });
+                }
+            });
+        });
+
+        // Make table rows clickable
+        const tableRows = document.querySelectorAll('.activity-table tbody tr');
+        tableRows.forEach(row => {
+            row.addEventListener('click', () => {
+                // You would typically navigate to a detail page or show a modal
+                alert('Viewing details for this activity');
+            });
+            row.style.cursor = 'pointer';
+        });
+
+        // Make nav items clickable
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                navItems.forEach(navItem => navItem.classList.remove('active'));
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // You would typically navigate to a new page here
+                const itemName = this.querySelector('span').textContent;
+                if (itemName !== 'Voting') { // Don't alert when clicking on current page
+                    alert(`Navigating to ${itemName}`);
+                }
+            });
+        });
+
+        // Hide loading bar after page load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading-bar').style.display = 'none';
+            }, 2000);
+        });
+        
+        // Theme Switcher
+        const adminThemeBtn = document.getElementById('admin-theme');
+        const userThemeBtn = document.getElementById('user-theme');
+        const switchRoleBtn = document.getElementById('switch-role-btn');
+        const roleBadge = document.getElementById('role-badge');
+        const userRoleText = document.querySelector('.user-role');
+        const userDropdownRole = document.querySelector('.user-dropdown-role');
+        
+        adminThemeBtn.addEventListener('click', () => {
+            document.body.classList.remove('user-theme');
+            document.body.classList.add('admin-theme');
+            adminThemeBtn.classList.add('active');
+            userThemeBtn.classList.remove('active');
+            roleBadge.textContent = 'Administrator';
+            userRoleText.textContent = 'Administrator';
+            userDropdownRole.textContent = 'Administrator';
+            switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to User View</span>';
+        });
+        
+        userThemeBtn.addEventListener('click', () => {
+            document.body.classList.remove('admin-theme');
+            document.body.classList.add('user-theme');
+            adminThemeBtn.classList.remove('active');
+            userThemeBtn.classList.add('active');
+            roleBadge.textContent = 'User';
+            userRoleText.textContent = 'User';
+            userDropdownRole.textContent = 'User';
+            switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to Admin View</span>';
+        });
+        
+        switchRoleBtn.addEventListener('click', () => {
+            if (document.body.classList.contains('admin-theme')) {
+                document.body.classList.remove('admin-theme');
+                document.body.classList.add('user-theme');
+                adminThemeBtn.classList.remove('active');
+                userThemeBtn.classList.add('active');
+                roleBadge.textContent = 'User';
+                userRoleText.textContent = 'User';
+                userDropdownRole.textContent = 'User';  
+                switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to Admin View</span>';
+            } else {
+                document.body.classList.remove('user-theme');
+                document.body.classList.add('admin-theme');
+                adminThemeBtn.classList.add('active');
+                userThemeBtn.classList.remove('active');
+                roleBadge.textContent = 'Administrator';
+                userRoleText.textContent = 'Administrator';
+                userDropdownRole.textContent = 'Administrator';
+                switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to User View</span>';
+            }
+            userDropdown.classList.remove('show');
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
 
