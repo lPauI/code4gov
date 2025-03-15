@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/css/voting.css">
 </head>
 <body class="admin-theme">
-    
     <!-- Role Badge -->
     <div class="role-badge" id="role-badge">Administrator</div>
 
@@ -20,7 +19,6 @@
             <span class="logo-text">GovPortal</span>
         </div>
         <div class="header-actions">
-
             <div class="user-menu" id="user-menu-toggle">
                 <div class="user-avatar">
                     <span>JD</span>
@@ -191,14 +189,14 @@
             <div class="widget-header">
                 <div class="widget-title">Voting Initiatives</div>
                 <div class="widget-actions">
-                    <button class="widget-action active" data-tab="active-votes">Active</button>
+                    <button class="widget-action active" data-tab="active-votes">Available to Vote</button>
                     <button class="widget-action" data-tab="my-votes">My Votes</button>
-                    <button class="widget-action" data-tab="past-votes">Completed</button>
+                    <button class="widget-action" data-tab="completed-votes">All Completed</button>
                 </div>
             </div>
             
             <div class="widget-content">
-                <!-- Active Votes Tab -->
+                <!-- Active Votes Tab (votes you haven't participated in yet) -->
                 <div class="tab-content active" id="active-votes">
                     <div class="vote-cards">
                         <div class="vote-card">
@@ -218,7 +216,7 @@
                                     <i class="fas fa-award"></i> +15 points
                                 </span>
                             </div>
-                            <a href="vote.html"> <button class="btn primary vote-btn" data-vote-id="1">Vote Now</button></a>
+                            <a href="vote.html"><button class="btn primary vote-btn" data-vote-id="1">Vote Now</button></a>
                         </div>
 
                         <div class="vote-card">
@@ -263,48 +261,160 @@
                     </div>
                 </div>
 
-                <!-- My Votes Tab -->
+                <!-- My Votes Tab (votes you've participated in) -->
                 <div class="tab-content" id="my-votes">
-                    <div class="activity-table-container">
-                        <table class="activity-table">
-                            <thead>
-                                <tr>
-                                    <th>Initiative</th>
-                                    <th>Your Vote</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                    <th>Points</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Historic Building Facades Renovation</td>
-                                    <td>Option 2 - Renovation with original elements preservation</td>
-                                    <td>Apr 10, 2025</td>
-                                    <td><span class="status-badge completed">Completed</span></td>
-                                    <td><span class="points-badge">+15</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Farmers Market Modernization</td>
-                                    <td>Option 1 - New construction with modern facilities</td>
-                                    <td>Mar 25, 2025</td>
-                                    <td><span class="status-badge completed">Completed</span></td>
-                                    <td><span class="points-badge">+10</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Participatory Budgeting 2025</td>
-                                    <td>Project 3 - Green spaces between buildings</td>
-                                    <td>May 2, 2025</td>
-                                    <td><span class="status-badge processing">In Progress</span></td>
-                                    <td><span class="points-badge pending">Pending</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <h3 class="section-title">Active Votes You've Participated In</h3>
+                    <div class="vote-cards">
+                        <div class="vote-card my-vote">
+                            <div class="vote-card-header">
+                                <span class="vote-category">Budget</span>
+                                <span class="vote-deadline">
+                                    <i class="fas fa-clock"></i> Expires in 18 days
+                                </span>
+                            </div>
+                            <div class="vote-badge">
+                                <i class="fas fa-check-circle"></i> You voted
+                            </div>
+                            <h3>Participatory Budgeting 2025</h3>
+                            <p>Vote for citizen-proposed projects for the 2025 participatory budget allocation.</p>
+                            
+                            <div class="your-vote-info">
+                                <h4>Your vote:</h4>
+                                <p>Project 3 - Green spaces between buildings</p>
+                                <span class="vote-date">Voted on May 2, 2025</span>
+                            </div>
+                            
+                            <div class="vote-meta">
+                                <span class="vote-participants">
+                                    <i class="fas fa-users"></i> 3,782 participants
+                                </span>
+                                <span class="vote-points earned">
+                                    <i class="fas fa-award"></i> +20 points earned
+                                </span>
+                            </div>
+                            <button class="btn secondary">View Current Results</button>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Completed Votes You've Participated In</h3>
+                    <div class="vote-cards">
+                        <div class="vote-card my-vote completed">
+                            <div class="vote-card-header">
+                                <span class="vote-category">Urban Planning</span>
+                                <span class="vote-result success">
+                                    <i class="fas fa-check-circle"></i> Approved
+                                </span>
+                            </div>
+                            <div class="vote-badge">
+                                <i class="fas fa-check-circle"></i> You voted
+                            </div>
+                            <h3>Historic Building Facades Renovation</h3>
+                            <p>Initiative for the renovation of historic building facades in the city center.</p>
+                            
+                            <div class="your-vote-info">
+                                <h4>Your vote:</h4>
+                                <p>Option 2 - Renovation with original elements preservation</p>
+                                <span class="vote-date">Voted on Apr 10, 2025</span>
+                                <span class="vote-winner">This option won with 65% of votes</span>
+                            </div>
+                            
+                            <div class="vote-results">
+                                <div class="vote-result-item">
+                                    <div class="vote-result-label">
+                                        <span>Option 1 - Minimal renovation</span>
+                                        <span>25%</span>
+                                    </div>
+                                    <div class="vote-result-bar">
+                                        <div class="vote-result-progress" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                                <div class="vote-result-item your-choice">
+                                    <div class="vote-result-label">
+                                        <span>Option 2 - Renovation with original elements preservation</span>
+                                        <span>65%</span>
+                                    </div>
+                                    <div class="vote-result-bar">
+                                        <div class="vote-result-progress" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                                <div class="vote-result-item">
+                                    <div class="vote-result-label">
+                                        <span>Option 3 - Complete renovation</span>
+                                        <span>10%</span>
+                                    </div>
+                                    <div class="vote-result-bar">
+                                        <div class="vote-result-progress" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="vote-meta">
+                                <span class="vote-participants">
+                                    <i class="fas fa-users"></i> 3,542 participants
+                                </span>
+                                <span class="vote-points earned">
+                                    <i class="fas fa-award"></i> +15 points earned
+                                </span>
+                            </div>
+                            <button class="btn secondary">View Details</button>
+                        </div>
+
+                        <div class="vote-card my-vote completed">
+                            <div class="vote-card-header">
+                                <span class="vote-category">Infrastructure</span>
+                                <span class="vote-result success">
+                                    <i class="fas fa-check-circle"></i> Approved
+                                </span>
+                            </div>
+                            <div class="vote-badge">
+                                <i class="fas fa-check-circle"></i> You voted
+                            </div>
+                            <h3>Farmers Market Modernization</h3>
+                            <p>Initiative for the modernization of the farmers market in the Mănăștur district.</p>
+                            
+                            <div class="your-vote-info">
+                                <h4>Your vote:</h4>
+                                <p>Option 1 - New construction with modern facilities</p>
+                                <span class="vote-date">Voted on Mar 25, 2025</span>
+                                <span class="vote-winner">This option won with 72% of votes</span>
+                            </div>
+                            
+                            <div class="vote-results">
+                                <div class="vote-result-item your-choice">
+                                    <div class="vote-result-label">
+                                        <span>Option 1 - New construction with modern facilities</span>
+                                        <span>72%</span>
+                                    </div>
+                                    <div class="vote-result-bar">
+                                        <div class="vote-result-progress" style="width: 72%"></div>
+                                    </div>
+                                </div>
+                                <div class="vote-result-item">
+                                    <div class="vote-result-label">
+                                        <span>Option 2 - Renovation of existing structure</span>
+                                        <span>28%</span>
+                                    </div>
+                                    <div class="vote-result-bar">
+                                        <div class="vote-result-progress" style="width: 28%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="vote-meta">
+                                <span class="vote-participants">
+                                    <i class="fas fa-users"></i> 2,187 participants
+                                </span>
+                                <span class="vote-points earned">
+                                    <i class="fas fa-award"></i> +10 points earned
+                                </span>
+                            </div>
+                            <button class="btn secondary">View Details</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Past Votes Tab -->
-                <div class="tab-content" id="past-votes">
+                <!-- All Completed Votes Tab -->
+                <div class="tab-content" id="completed-votes">
                     <div class="vote-cards">
                         <div class="vote-card past">
                             <div class="vote-card-header">
@@ -398,14 +508,54 @@
                             </div>
                             <button class="btn secondary">View Details</button>
                         </div>
+                        
+                        <div class="vote-card past">
+                            <div class="vote-card-header">
+                                <span class="vote-category">Education</span>
+                                <span class="vote-result success">
+                                    <i class="fas fa-check-circle"></i> Approved
+                                </span>
+                            </div>
+                            <h3>School Playground Equipment</h3>
+                            <p>Initiative to update playground equipment at elementary schools throughout the city.</p>
+                            
+                            <div class="vote-results">
+                                <div class="vote-result-item">
+                                    <div class="vote-result-label">
+                                        <span>Option 1 - Traditional equipment</span>
+                                        <span>35%</span>
+                                    </div>
+                                    <div class="vote-result-bar">
+                                        <div class="vote-result-progress" style="width: 35%"></div>
+                                    </div>
+                                </div>
+                                <div class="vote-result-item">
+                                    <div class="vote-result-label">
+                                        <span>Option 2 - Modern inclusive equipment</span>
+                                        <span>65%</span>
+                                    </div>
+                                    <div class="vote-result-bar">
+                                        <div class="vote-result-progress" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="vote-meta">
+                                <span class="vote-participants">
+                                    <i class="fas fa-users"></i> 1,856 participants
+                                </span>
+                                <span class="vote-date">
+                                    <i class="fas fa-calendar-alt"></i> Completed on Feb 28, 2025
+                                </span>
+                            </div>
+                            <button class="btn secondary">View Details</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </main>
     
-
     <!-- Theme Switcher -->
     <div class="theme-switcher">
         <div class="theme-option admin active" id="admin-theme">
@@ -462,7 +612,6 @@
         // Check on resize
         window.addEventListener('resize', checkScreenSize);
         
-        
         // User Dropdown
         const userMenuToggle = document.getElementById('user-menu-toggle');
         const userDropdown = document.getElementById('user-dropdown');
@@ -470,9 +619,12 @@
         userMenuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             userDropdown.classList.toggle('show');
-            
-            // Hide notification dropdown if open
-            notificationDropdown.classList.remove('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!userMenuToggle.contains(e.target) && !userDropdown.contains(e.target)) {
+                userDropdown.classList.remove('show');
+            }
         });
 
         // Tab functionality
@@ -491,107 +643,6 @@
                 // Show corresponding content
                 const tabId = this.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
-            });
-        });
-
-        // Modal functionality
-        const modal = document.getElementById('voting-modal');
-        const closeModal = document.getElementById('close-modal');
-        const voteButtons = document.querySelectorAll('.vote-btn');
-
-        // Open modal when vote button is clicked
-        voteButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const voteId = this.getAttribute('data-vote-id');
-                openVoteForm(voteId);
-                modal.classList.add('show');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
-            });
-        });
-
-        // Function to open specific vote form
-        function openVoteForm(voteId) {
-            // Hide all forms
-            document.querySelectorAll('.vote-form').forEach(form => {
-                form.style.display = 'none';
-            });
-            
-            // Show success message
-            document.getElementById('vote-success').style.display = 'none';
-            
-            // Show selected form
-            document.getElementById(`vote-form-${voteId}`).style.display = 'block';
-            
-            // Update modal title based on vote
-            const voteTitle = document.querySelector(`[data-vote-id="${voteId}"]`).closest('.vote-card').querySelector('h3').textContent;
-            document.getElementById('modal-title').textContent = `Vote: ${voteTitle}`;
-        }
-
-        // Handle vote form submissions
-        const voteForms = document.querySelectorAll('.vote-form');
-        
-        voteForms.forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Show success message
-                document.getElementById('vote-form-container').style.display = 'none';
-                document.getElementById('vote-success').style.display = 'block';
-                
-                // Update points based on vote
-                const formId = this.id;
-                let points = 15; // Default
-                
-                if (formId === 'vote-form-2') {
-                    points = 20;
-                }
-                
-                document.getElementById('points-earned').textContent = points;
-                
-                // Reset form
-                this.reset();
-            });
-        });
-
-        // Handle cancel buttons
-        const cancelButtons = document.querySelectorAll('[id^="cancel-vote"]');
-        
-        cancelButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                modal.classList.remove('show');
-                document.body.style.overflow = '';
-            });
-        });
-
-        
-
-        // Handle checkbox selection limit for budget voting
-        const budgetCheckboxes = document.querySelectorAll('input[name="budget-option"]');
-        const selectedCountElement = document.getElementById('selected-count');
-        const maxSelections = 3;
-        
-        budgetCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                const checkedBoxes = document.querySelectorAll('input[name="budget-option"]:checked');
-                
-                // Update counter
-                selectedCountElement.textContent = checkedBoxes.length;
-                
-                // Disable unchecked checkboxes if max reached
-                if (checkedBoxes.length >= maxSelections) {
-                    budgetCheckboxes.forEach(box => {
-                        if (!box.checked) {
-                            box.disabled = true;
-                            box.parentElement.classList.add('disabled');
-                        }
-                    });
-                } else {
-                    // Enable all checkboxes
-                    budgetCheckboxes.forEach(box => {
-                        box.disabled = false;
-                        box.parentElement.classList.remove('disabled');
-                    });
-                }
             });
         });
 
@@ -617,13 +668,6 @@
                 // You would typically navigate to a new page here
                 const itemName = this.querySelector('span').textContent;
             });
-        });
-
-        // Hide loading bar after page load
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loading-bar').style.display = 'none';
-            }, 2000);
         });
         
         // Theme Switcher
@@ -656,31 +700,7 @@
             switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to Admin View</span>';
         });
         
-        switchRoleBtn.addEventListener('click', () => {
-            if (document.body.classList.contains('admin-theme')) {
-                document.body.classList.remove('admin-theme');
-                document.body.classList.add('user-theme');
-                adminThemeBtn.classList.remove('active');
-                userThemeBtn.classList.add('active');
-                roleBadge.textContent = 'User';
-                userRoleText.textContent = 'User';
-                userDropdownRole.textContent = 'User';  
-                switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to Admin View</span>';
-            } else {
-                document.body.classList.remove('user-theme');
-                document.body.classList.add('admin-theme');
-                adminThemeBtn.classList.add('active');
-                userThemeBtn.classList.remove('active');
-                roleBadge.textContent = 'Administrator';
-                userRoleText.textContent = 'Administrator';
-                userDropdownRole.textContent = 'Administrator';
-                switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to User View</span>';
-            }
-            userDropdown.classList.remove('show');
-        });
-
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
     </script>
 </body>
 </html>
