@@ -25,12 +25,12 @@ config = {
 app = FastAPI()
 
 @app.get("/login")
-def login(cnpInput: str, passwordInput: str):
+def login(emailInput: str, passwordInput: str):
     try:
         cnx = mysql.connector.connect(**config)
         cursor = cnx.cursor(buffered=True)
         
-        cursor.execute("SELECT Parola FROM users WHERE CNP = %s", (cnpInput,))
+        cursor.execute("SELECT Parola FROM users WHERE Email = %s", (emailInput,))
         result = cursor.fetchone()
         cursor.close()
         cnx.close()
@@ -48,7 +48,7 @@ def login(cnpInput: str, passwordInput: str):
 
 
 @app.post("/register")
-def register(cnpInput: int, numeInput: str, prenumeInput: str, serieInput: str, numarInput: int, passwordInput: str):
+def register(cnpInput: int, numeInput: str, prenumeInput: str, serieInput: str, numarInput: int, emailInput: str, passwordInput: str):
     try:
         cnx = mysql.connector.connect(**config)
         cursor = cnx.cursor()
@@ -56,7 +56,7 @@ def register(cnpInput: int, numeInput: str, prenumeInput: str, serieInput: str, 
         hashed_password = bcrypt.hashpw(passwordInput.encode('utf-8'), bcrypt.gensalt())
         hashed_password_str = hashed_password.decode('utf-8')
         
-        cursor.execute("INSERT INTO users (CNP, Nume, Prenume, Serie, Numar, Parola, Admin) VALUES (%s, %s, %s, %s, %s, %s, 0)", (cnpInput, numeInput, prenumeInput, serieInput, numarInput, hashed_password_str))
+        cursor.execute("INSERT INTO users (CNP, Nume, Prenume, Serie, Numar, Email, Parola, Admin) VALUES (%s, %s, %s, %s, %s, %s, %s, 0)", (cnpInput, numeInput, prenumeInput, serieInput, numarInput, emailInput, hashed_password_str))
         cnx.commit()
         cursor.close()
         cnx.close()
