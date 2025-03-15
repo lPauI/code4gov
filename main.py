@@ -24,7 +24,30 @@ config = {
 
 app = FastAPI()
 
-@app.get("/register")
+@app.get("/login")
+def login(cnpInput: str, passwordInput: str):
+    try:
+        cnx = mysql.connector.connect(**config)
+        cursor = cnx.cursor(buffered=True)
+        
+        cursor.execute("SELECT Parola FROM users WHERE CNP = %s", (cnpInput,))
+        result = cursor.fetchone()
+        cursor.close()
+        cnx.close()
+        
+        if result is None:
+            return {"error": "User not found."}
+        
+        if bcrypt.checkpw(passwordInput.encode('utf-8'), result[0].encode('utf-8')):
+            return {"message": "User authenticated successfully."}
+        else:
+            return {"error": "Incorrect password."}
+    
+    except mysql.connector.Error as e:
+        return {"error": f"DB Error: {str(e)}"}
+
+
+@app.post("/register")
 def register(cnpInput: int, numeInput: str, prenumeInput: str, serieInput: str, numarInput: int, passwordInput: str):
     try:
         cnx = mysql.connector.connect(**config)
@@ -63,7 +86,7 @@ def get_otp(email: str):
         return {"error": f"DB Error: {str(e)}"}
 
 
-@app.get("/send_otp")
+@app.post("/send_otp")
 def send_otp(email: str):
     otp = randint(100000, 999999)
     subject = "OTP from Code4Gov"
