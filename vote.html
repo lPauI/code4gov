@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Portal - Vote Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/voting.css">
+</head>
+<body class="admin-theme">
+    <!-- Loading Bar -->
+    <div class="loading-bar" id="loading-bar"></div>
+    
+    <!-- Role Badge -->
+    <div class="role-badge" id="role-badge">Administrator</div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-landmark logo-icon"></i>
+            <span class="logo-text">GovPortal</span>
+        </div>
+        <div class="header-actions">
+
+            
+            <div class="user-menu" id="user-menu-toggle">
+                <div class="user-avatar">
+                    <span>JD</span>
+                </div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Administrator</div>
+                </div>
+                
+                <!-- User Dropdown -->
+                <div class="user-dropdown" id="user-dropdown">
+                    <div class="user-dropdown-header">
+                        <div class="user-dropdown-avatar">
+                            <span>JD</span>
+                        </div>
+                        <div class="user-dropdown-info">
+                            <div class="user-dropdown-name">John Doe</div>
+                            <div class="user-dropdown-role">Administrator</div>
+                        </div>
+                    </div>
+                    <div class="user-dropdown-body">
+                        <div class="user-dropdown-item">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </div>
+                        <div class="user-dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </div>
+                        <div class="user-dropdown-item" id="switch-role-btn">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Switch to User View</span>
+                        </div>
+                    </div>
+                    <div class="user-dropdown-footer">
+                        <button>
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Sign Out</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="nav-section">
+            <div class="nav-section-title">Main</div>
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Documents</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Calendar</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Statistics</span>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Participation</div>
+            <ul class="nav-items">
+                <li class="nav-item active">
+                    <i class="fas fa-vote-yea"></i>
+                    <span>Voting</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-comment-alt"></i>
+                    <span>Feedback</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-poll"></i>
+                    <span>Surveys</span>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Services</div>
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <i class="fas fa-id-card"></i>
+                    <span>ID Services</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-car"></i>
+                    <span>Vehicle Registration</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Property Records</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Education</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Healthcare</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <div class="sidebar-toggle" id="sidebar-toggle">
+        <i class="fas fa-bars" id="sidebar-icon"></i>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb">
+            <a href="voting.html"><i class="fas fa-arrow-left"></i> Back to Voting</a>
+        </div>
+
+        <h1 class="page-title" id="vote-title">Park Design in Mărăști District</h1>
+        
+        <!-- Vote Information Card -->
+        <div class="widget">
+            <div class="widget-header">
+                <div class="widget-title">Initiative Information</div>
+                <div class="widget-actions">
+                    <span class="vote-category">Urban Planning</span>
+                    <span class="vote-deadline">
+                        <i class="fas fa-clock"></i> Expires in 5 days
+                    </span>
+                </div>
+            </div>
+            
+            <div class="widget-content">
+                <div class="vote-info">
+                    <div class="vote-info-description">
+                        <p>This initiative aims to redesign the park in the Mărăști district to better serve the community's needs. The park has been in need of renovation for several years, and the city has allocated funds for this project. Three design proposals have been developed by different architectural firms, and citizens are invited to vote for their preferred design.</p>
+                        
+                        <p>The winning design will be implemented starting next spring, with an estimated completion time of 6 months. Your participation in this vote is crucial for ensuring that the park meets the community's expectations and needs.</p>
+                    </div>
+                    
+                    <div class="vote-info-meta">
+                        <div class="vote-info-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <span class="vote-info-label">Participants</span>
+                                <span class="vote-info-value">1,245</span>
+                            </div>
+                        </div>
+                        <div class="vote-info-item">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <span class="vote-info-label">Points</span>
+                                <span class="vote-info-value">+15</span>
+                            </div>
+                        </div>
+                        <div class="vote-info-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <span class="vote-info-label">Start Date</span>
+                                <span class="vote-info-value">Mar 10, 2025</span>
+                            </div>
+                        </div>
+                        <div class="vote-info-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <div>
+                                <span class="vote-info-label">End Date</span>
+                                <span class="vote-info-value">Mar 20, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vote Form -->
+        <div class="widget">
+            <div class="widget-header">
+                <div class="widget-title">Cast Your Vote</div>
+            </div>
+            
+            <div class="widget-content">
+                <form class="vote-form" id="vote-form">
+                    <div class="vote-options">
+                        <div class="vote-option-card">
+                            <input type="radio" name="option" id="option-1" value="1" class="vote-radio">
+                            <label for="option-1" class="vote-option-label">
+                                <div class="vote-option-content">
+                                    <h4>Proposal 1: Natural Park</h4>
+                                    <p>A park with emphasis on green spaces, natural trails, and relaxation areas in the midst of nature.</p>
+                                    
+                                    <div class="vote-option-details">
+                                        <p>This design focuses on preserving and enhancing the natural environment. It includes extensive green spaces with native plants, winding natural trails, and quiet relaxation areas where visitors can enjoy the tranquility of nature. The design also features a small artificial lake that will serve as a habitat for local wildlife and provide a scenic focal point for the park.</p>
+                                        
+                                        <p>The Natural Park design prioritizes sustainability and biodiversity, with plans for rainwater collection systems, solar-powered lighting, and educational signage about local flora and fauna. This approach aims to create a peaceful retreat from urban life and promote environmental awareness.</p>
+                                    </div>
+                                    
+                                    <h5>Key Features:</h5>
+                                    <ul class="vote-option-features">
+                                        <li><i class="fas fa-check"></i> Extensive green spaces with native plants</li>
+                                        <li><i class="fas fa-check"></i> Natural walking trails</li>
+                                        <li><i class="fas fa-check"></i> Picnic areas and relaxation zones</li>
+                                        <li><i class="fas fa-check"></i> Artificial lake with local aquatic plants</li>
+                                        <li><i class="fas fa-check"></i> Bird watching stations</li>
+                                        <li><i class="fas fa-check"></i> Environmental education area</li>
+                                        <li><i class="fas fa-check"></i> Sustainable infrastructure</li>
+                                        <li><i class="fas fa-check"></i> Low-impact lighting</li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="vote-option-card">
+                            <input type="radio" name="option" id="option-2" value="2" class="vote-radio">
+                            <label for="option-2" class="vote-option-label">
+                                <div class="vote-option-content">
+                                    <h4>Proposal 2: Recreational Park</h4>
+                                    <p>A park with emphasis on recreational activities for all ages, with play areas and sports facilities.</p>
+                                    
+                                    <div class="vote-option-details">
+                                        <p>This design transforms the park into a vibrant recreational hub for the community. It includes a variety of sports facilities, playgrounds for different age groups, and dedicated areas for outdoor fitness. The design aims to promote physical activity and social interaction among residents of all ages.</p>
+                                        
+                                        <p>The Recreational Park design includes modern amenities such as multi-purpose sports courts, a skate park, and outdoor fitness equipment. The playgrounds are designed with inclusive features to accommodate children of all abilities. Paved bike paths circle the park and connect to the city's existing bike lane network, encouraging active transportation.</p>
+                                    </div>
+                                    
+                                    <h5>Key Features:</h5>
+                                    <ul class="vote-option-features">
+                                        <li><i class="fas fa-check"></i> Multi-purpose sports courts</li>
+                                        <li><i class="fas fa-check"></i> Children's playgrounds for different age groups</li>
+                                        <li><i class="fas fa-check"></i> Bike paths and skating areas</li>
+                                        <li><i class="fas fa-check"></i> Outdoor fitness equipment</li>
+                                        <li><i class="fas fa-check"></i> Table tennis and chess tables</li>
+                                        <li><i class="fas fa-check"></i> Water play area for summer</li>
+                                        <li><i class="fas fa-check"></i> Accessible design for all abilities</li>
+                                        <li><i class="fas fa-check"></i> Shaded rest areas</li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="vote-option-card">
+                            <input type="radio" name="option" id="option-3" value="3" class="vote-radio">
+                            <label for="option-3" class="vote-option-label">
+                                <div class="vote-option-content">
+                                    <h4>Proposal 3: Cultural Park</h4>
+                                    <p>A park with emphasis on cultural events, with an outdoor amphitheater and exhibition areas.</p>
+                                    
+                                    <div class="vote-option-details">
+                                        <p>This design reimagines the park as a cultural center for the community. It features an outdoor amphitheater for performances, flexible exhibition spaces, and dedicated areas for artists and craftspeople. The design aims to celebrate local culture and provide a platform for creative expression.</p>
+                                        
+                                        <p>The Cultural Park design includes infrastructure for hosting various events, from concerts and theater performances to art exhibitions and craft markets. The amphitheater is designed with excellent acoustics and can accommodate up to 300 people. The park also includes smaller, intimate spaces for poetry readings, workshops, and other cultural activities.</p>
+                                    </div>
+                                    
+                                    <h5>Key Features:</h5>
+                                    <ul class="vote-option-features">
+                                        <li><i class="fas fa-check"></i> Outdoor amphitheater with seating</li>
+                                        <li><i class="fas fa-check"></i> Flexible exhibition spaces</li>
+                                        <li><i class="fas fa-check"></i> Dedicated areas for street artists</li>
+                                        <li><i class="fas fa-check"></i> Cafes and relaxation areas</li>
+                                        <li><i class="fas fa-check"></i> Public art installations</li>
+                                        <li><i class="fas fa-check"></i> Cultural event infrastructure</li>
+                                        <li><i class="fas fa-check"></i> Craft market space</li>
+                                        <li><i class="fas fa-check"></i> Community garden</li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="vote-form-footer">
+                        <p class="vote-disclaimer">Your vote is anonymous and secure. You can vote only once for this initiative. By submitting your vote, you acknowledge that you have reviewed all options and are making an informed decision.</p>
+                        <div class="vote-actions">
+                            <a href="voting.html" class="btn secondary">Cancel</a>
+                            <button type="button" id="submit-vote" class="btn primary">Submit Vote</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Vote Success Message (initially hidden) -->
+        <div class="widget" id="vote-success" style="display: none;">
+            <div class="widget-content">
+                <div class="vote-success-content">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Your vote has been successfully recorded!</h3>
+                    <p>Thank you for your participation. You have received <span id="points-earned">15</span> points for your vote.</p>
+                    <p>Results will be available after the voting period ends on March 20, 2025.</p>
+                    <div class="vote-success-actions">
+                        <a href="voting.html" class="btn primary">Return to Voting Page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <div class="theme-option admin active" id="admin-theme">
+            <i class="fas fa-user-shield"></i>
+        </div>
+        <div class="theme-option user" id="user-theme">
+            <i class="fas fa-user"></i>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Sidebar Toggle Functionality
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebarIcon = document.getElementById('sidebar-icon');
+        const mainContent = document.getElementById('main-content');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            sidebarToggle.classList.toggle('collapsed');
+            mainContent.classList.toggle('expanded');
+            
+            // Change icon based on sidebar state
+            if (sidebar.classList.contains('collapsed')) {
+                sidebarIcon.classList.remove('fa-bars');
+                sidebarIcon.classList.add('fa-chevron-right');
+            } else {
+                sidebarIcon.classList.remove('fa-chevron-right');
+                sidebarIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Responsive behavior for mobile
+        function checkScreenSize() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.add('collapsed');
+                sidebarToggle.classList.add('collapsed');
+                mainContent.classList.add('expanded');
+                sidebarIcon.classList.remove('fa-bars');
+                sidebarIcon.classList.add('fa-chevron-right');
+            } else {
+                sidebar.classList.remove('collapsed');
+                sidebarToggle.classList.remove('collapsed');
+                mainContent.classList.remove('expanded');
+                sidebarIcon.classList.remove('fa-chevron-right');
+                sidebarIcon.classList.add('fa-bars');
+            }
+        }
+
+        // Check on load
+        checkScreenSize();
+        
+        // Check on resize
+        window.addEventListener('resize', checkScreenSize);
+
+        
+        // User Dropdown
+        const userMenuToggle = document.getElementById('user-menu-toggle');
+        const userDropdown = document.getElementById('user-dropdown');
+        
+        userMenuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userDropdown.classList.toggle('show');
+            
+            // Hide notification dropdown if open
+            notificationDropdown.classList.remove('show');
+        });
+
+
+        // Handle vote form submission
+        const voteForm = document.getElementById('vote-form');
+        
+    const submitButton = document.getElementById("submit-vote");
+
+    submitButton.addEventListener("click", function() {
+        console.log("Submitting vote...");
+        // Check if an option is selected
+        const selectedOption = document.querySelector('input[name="option"]:checked');
+
+        if (!selectedOption) {
+            alert('Please select an option before submitting your vote.');
+            return;
+        }
+
+        console.log("Selected option:", selectedOption.value);
+
+        // Hide the form and show success message
+        voteForm.parentElement.parentElement.style.display = 'none';
+        document.getElementById('vote-success').style.display = 'block';
+
+        // Scroll to success message
+        document.getElementById('vote-success').scrollIntoView({ behavior: 'smooth' });
+
+        // Redirect after a delay (e.g., 2 seconds) so the user sees the success message
+        setTimeout(() => {
+            window.location.href = 'voting.html';
+        }, 2000);
+    });
+
+        // Theme Switcher
+        const adminThemeBtn = document.getElementById('admin-theme');
+        const userThemeBtn = document.getElementById('user-theme');
+        const switchRoleBtn = document.getElementById('switch-role-btn');
+        const roleBadge = document.getElementById('role-badge');
+        const userRoleText = document.querySelector('.user-role');
+        const userDropdownRole = document.querySelector('.user-dropdown-role');
+        
+        adminThemeBtn.addEventListener('click', () => {
+            document.body.classList.remove('user-theme');
+            document.body.classList.add('admin-theme');
+            adminThemeBtn.classList.add('active');
+            userThemeBtn.classList.remove('active');
+            roleBadge.textContent = 'Administrator';
+            userRoleText.textContent = 'Administrator';
+            userDropdownRole.textContent = 'Administrator';
+            switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to User View</span>';
+        });
+        
+        userThemeBtn.addEventListener('click', () => {
+            document.body.classList.remove('admin-theme');
+            document.body.classList.add('user-theme');
+            adminThemeBtn.classList.remove('active');
+            userThemeBtn.classList.add('active');
+            roleBadge.textContent = 'User';
+            userRoleText.textContent = 'User';
+            userDropdownRole.textContent = 'User';
+            switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to Admin View</span>';
+        });
+        
+        switchRoleBtn.addEventListener('click', () => {
+            if (document.body.classList.contains('admin-theme')) {
+                document.body.classList.remove('admin-theme');
+                document.body.classList.add('user-theme');
+                adminThemeBtn.classList.remove('active');
+                userThemeBtn.classList.add('active');
+                roleBadge.textContent = 'User';
+                userRoleText.textContent = 'User';
+                userDropdownRole.textContent = 'User';  
+                switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to Admin View</span>';
+            } else {
+                document.body.classList.remove('user-theme');
+                document.body.classList.add('admin-theme');
+                adminThemeBtn.classList.add('active');
+                userThemeBtn.classList.remove('active');
+                roleBadge.textContent = 'Administrator';
+                userRoleText.textContent = 'Administrator';
+                userDropdownRole.textContent = 'Administrator';
+                switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to User View</span>';
+            }
+            userDropdown.classList.remove('show');
+        });
+
+        // Hide loading bar after page load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading-bar').style.display = 'none';
+            }, 2000);
+        });
+
+        // Get vote ID from URL parameter (for a real implementation)
+        // This would be used to load the correct vote data
+        function getVoteIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+
+        // This function would fetch the vote data from the server in a real implementation
+        function loadVoteData(voteId) {
+            // In a real implementation, this would be an API call
+            console.log(`Loading vote data for ID: ${voteId}`);
+            
+            // For demonstration purposes, we're using hardcoded data
+            // In a real implementation, this would be replaced with data from the server
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            const voteId = getVoteIdFromUrl();
+            if (voteId) {
+                loadVoteData(voteId);
+            }
+        });
+    </script>
+</body>
+</html>
+
