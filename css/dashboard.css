@@ -1314,3 +1314,12 @@ body:not(.admin-theme) .nav-item.admin-only {
 .theme-option.user {
   background-color: var(--user-primary);
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
