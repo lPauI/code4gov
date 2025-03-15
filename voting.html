@@ -71,6 +71,12 @@
         <div class="nav-section">
             <div class="nav-section-title">Main</div>
             <ul class="nav-items">
+                <a href="dashboard.html">
+                    <li class="nav-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </li>
+                </a>
                 <li class="nav-item">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
@@ -214,7 +220,7 @@
                                     <i class="fas fa-award"></i> +15 points
                                 </span>
                             </div>
-                            <button class="btn primary vote-btn" data-vote-id="1">Vote Now</button>
+                            <a href="vote.html"> <button class="btn primary vote-btn" data-vote-id="1">Vote Now</button></a>
                         </div>
 
                         <div class="vote-card">
@@ -401,252 +407,6 @@
 
     </main>
     
-    <!-- Voting Form Modal -->
-    <div class="modal" id="voting-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modal-title">Voting Form</h2>
-                <button class="close-modal" id="close-modal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="vote-form-container" id="vote-form-container">
-                    <!-- Vote Form 1 - Park Design -->
-                    <form class="vote-form" id="vote-form-1">
-                        <div class="vote-form-header">
-                            <h3>Park Design in Mărăști District</h3>
-                            <p>Choose one of the three proposals for the new park design in the Mărăști district.</p>
-                        </div>
-                        
-                        <div class="vote-options">
-                            <div class="vote-option-card">
-                                <input type="radio" name="park-option" id="park-option-1" value="1" class="vote-radio">
-                                <label for="park-option-1" class="vote-option-label">
-                                    <div class="vote-option-image">
-                                        <img src="https://via.placeholder.com/300x200" alt="Proposal 1">
-                                    </div>
-                                    <div class="vote-option-content">
-                                        <h4>Proposal 1: Natural Park</h4>
-                                        <p>A park with emphasis on green spaces, natural trails, and relaxation areas in the midst of nature.</p>
-                                        <ul class="vote-option-features">
-                                            <li><i class="fas fa-check"></i> Extensive green spaces</li>
-                                            <li><i class="fas fa-check"></i> Walking trails</li>
-                                            <li><i class="fas fa-check"></i> Picnic areas</li>
-                                            <li><i class="fas fa-check"></i> Artificial lake</li>
-                                        </ul>
-                                    </div>
-                                </label>
-                            </div>
-                            
-                            <div class="vote-option-card">
-                                <input type="radio" name="park-option" id="park-option-2" value="2" class="vote-radio">
-                                <label for="park-option-2" class="vote-option-label">
-                                    <div class="vote-option-image">
-                                        <img src="https://via.placeholder.com/300x200" alt="Proposal 2">
-                                    </div>
-                                    <div class="vote-option-content">
-                                        <h4>Proposal 2: Recreational Park</h4>
-                                        <p>A park with emphasis on recreational activities for all ages, with play areas and sports facilities.</p>
-                                        <ul class="vote-option-features">
-                                            <li><i class="fas fa-check"></i> Sports fields</li>
-                                            <li><i class="fas fa-check"></i> Children's playgrounds</li>
-                                            <li><i class="fas fa-check"></i> Bike paths</li>
-                                            <li><i class="fas fa-check"></i> Outdoor fitness areas</li>
-                                        </ul>
-                                    </div>
-                                </label>
-                            </div>
-                            
-                            <div class="vote-option-card">
-                                <input type="radio" name="park-option" id="park-option-3" value="3" class="vote-radio">
-                                <label for="park-option-3" class="vote-option-label">
-                                    <div class="vote-option-image">
-                                        <img src="https://via.placeholder.com/300x200" alt="Proposal 3">
-                                    </div>
-                                    <div class="vote-option-content">
-                                        <h4>Proposal 3: Cultural Park</h4>
-                                        <p>A park with emphasis on cultural events, with an outdoor amphitheater and exhibition areas.</p>
-                                        <ul class="vote-option-features">
-                                            <li><i class="fas fa-check"></i> Outdoor amphitheater</li>
-                                            <li><i class="fas fa-check"></i> Exhibition areas</li>
-                                            <li><i class="fas fa-check"></i> Street artist spaces</li>
-                                            <li><i class="fas fa-check"></i> Cafes and relaxation areas</li>
-                                        </ul>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="vote-form-footer">
-                            <p class="vote-disclaimer">Your vote is anonymous and secure. You can vote only once for this initiative.</p>
-                            <div class="vote-actions">
-                                <button type="button" class="btn secondary" id="cancel-vote">Cancel</button>
-                                <button type="submit" class="btn primary" id="submit-vote">Submit Vote</button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <!-- Vote Form 2 - Participatory Budgeting -->
-                    <form class="vote-form" id="vote-form-2" style="display: none;">
-                        <div class="vote-form-header">
-                            <h3>Participatory Budgeting 2025</h3>
-                            <p>Choose the projects you want to support for the 2025 participatory budget. You can choose up to 3 projects.</p>
-                        </div>
-                        
-                        <div class="vote-options">
-                            <div class="vote-option-card checkbox">
-                                <input type="checkbox" name="budget-option" id="budget-option-1" value="1" class="vote-checkbox">
-                                <label for="budget-option-1" class="vote-option-label">
-                                    <div class="vote-option-content">
-                                        <h4>Project 1: Playground Modernization</h4>
-                                        <p>Modernization of 5 playgrounds in the city with new and safe equipment for children.</p>
-                                        <div class="budget-info">
-                                            <span class="budget-amount">Estimated budget: 250,000 lei</span>
-                                            <span class="budget-category">Category: Children's Infrastructure</span>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                            
-                            <div class="vote-option-card checkbox">
-                                <input type="checkbox" name="budget-option" id="budget-option-2" value="2" class="vote-checkbox">
-                                <label for="budget-option-2" class="vote-option-label">
-                                    <div class="vote-option-content">
-                                        <h4>Project 2: Bike Lanes</h4>
-                                        <p>Construction of 10 km of bike lanes connecting the city's neighborhoods.</p>
-                                        <div class="budget-info">
-                                            <span class="budget-amount">Estimated budget: 500,000 lei</span>
-                                            <span class="budget-category">Category: Urban Mobility</span>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                            
-                            <div class="vote-option-card checkbox">
-                                <input type="checkbox" name="budget-option" id="budget-option-3" value="3" class="vote-checkbox">
-                                <label for="budget-option-3" class="vote-option-label">
-                                    <div class="vote-option-content">
-                                        <h4>Project 3: Green Spaces Between Buildings</h4>
-                                        <p>Landscaping of green spaces between buildings with plants, flowers, and urban furniture.</p>
-                                        <div class="budget-info">
-                                            <span class="budget-amount">Estimated budget: 300,000 lei</span>
-                                            <span class="budget-category">Category: Green Spaces</span>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                            
-                            <div class="vote-option-card checkbox">
-                                <input type="checkbox" name="budget-option" id="budget-option-4" value="4" class="vote-checkbox">
-                                <label for="budget-option-4" class="vote-option-label">
-                                    <div class="vote-option-content">
-                                        <h4>Project 4: Smart Public Lighting</h4>
-                                        <p>Implementation of a smart public lighting system in the central areas of the city.</p>
-                                        <div class="budget-info">
-                                            <span class="budget-amount">Estimated budget: 450,000 lei</span>
-                                            <span class="budget-category">Category: Smart City</span>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                            
-                            <div class="vote-option-card checkbox">
-                                <input type="checkbox" name="budget-option" id="budget-option-5" value="5" class="vote-checkbox">
-                                <label for="budget-option-5" class="vote-option-label">
-                                    <div class="vote-option-content">
-                                        <h4>Project 5: Community Center</h4>
-                                        <p>Renovation and transformation of an abandoned building into a community center for social activities.</p>
-                                        <div class="budget-info">
-                                            <span class="budget-amount">Estimated budget: 600,000 lei</span>
-                                            <span class="budget-category">Category: Social Infrastructure</span>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="vote-form-footer">
-                            <p class="vote-disclaimer">You can select up to 3 projects. The total available budget is 1,000,000 lei.</p>
-                            <div class="vote-selection-counter">
-                                <span id="selected-count">0</span> of 3 projects selected
-                            </div>
-                            <div class="vote-actions">
-                                <button type="button" class="btn secondary" id="cancel-vote-2">Cancel</button>
-                                <button type="submit" class="btn primary" id="submit-vote-2">Submit Vote</button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <!-- Vote Form 3 - Public Transport -->
-                    <form class="vote-form" id="vote-form-3" style="display: none;">
-                        <div class="vote-form-header">
-                            <h3>Public Transport Line Extension</h3>
-                            <p>Vote for the new public transport routes proposed for the suburban areas.</p>
-                        </div>
-                        
-                        <div class="vote-options">
-                            <div class="vote-option-card">
-                                <input type="radio" name="transport-option" id="transport-option-1" value="1" class="vote-radio">
-                                <label for="transport-option-1" class="vote-option-label">
-                                    <div class="vote-option-image">
-                                        <img src="https://via.placeholder.com/300x200" alt="Route 1">
-                                    </div>
-                                    <div class="vote-option-content">
-                                        <h4>Route 1: Eastern Extension</h4>
-                                        <p>Extension of bus lines to the eastern neighborhoods of the city.</p>
-                                        <ul class="vote-option-features">
-                                            <li><i class="fas fa-check"></i> 3 new bus lines</li>
-                                            <li><i class="fas fa-check"></i> 12 new stations</li>
-                                            <li><i class="fas fa-check"></i> Frequency: 15 minutes</li>
-                                        </ul>
-                                    </div>
-                                </label>
-                            </div>
-                            
-                            <div class="vote-option-card">
-                                <input type="radio" name="transport-option" id="transport-option-2" value="2" class="vote-radio">
-                                <label for="transport-option-2" class="vote-option-label">
-                                    <div class="vote-option-image">
-                                        <img src="https://via.placeholder.com/300x200" alt="Route 2">
-                                    </div>
-                                    <div class="vote-option-content">
-                                        <h4>Route 2: Western Extension</h4>
-                                        <p>Extension of bus and tram lines to the western neighborhoods of the city.</p>
-                                        <ul class="vote-option-features">
-                                            <li><i class="fas fa-check"></i> 2 new bus lines</li>
-                                            <li><i class="fas fa-check"></i> 1 new tram line</li>
-                                            <li><i class="fas fa-check"></i> 15 new stations</li>
-                                            <li><i class="fas fa-check"></i> Frequency: 10 minutes</li>
-                                        </ul>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="vote-form-footer">
-                            <p class="vote-disclaimer">Your vote is anonymous and secure. You can vote only once for this initiative.</p>
-                            <div class="vote-actions">
-                                <button type="button" class="btn secondary" id="cancel-vote-3">Cancel</button>
-                                <button type="submit" class="btn primary" id="submit-vote-3">Submit Vote</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Vote Success Message -->
-                <div class="vote-success" id="vote-success" style="display: none;">
-                    <div class="success-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h3>Your vote has been successfully recorded!</h3>
-                    <p>Thank you for your participation. You have received <span id="points-earned">15</span> points for your vote.</p>
-                    <p>Results will be available after the voting period ends.</p>
-                    <button class="btn primary" id="close-success">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Theme Switcher -->
     <div class="theme-switcher">
@@ -703,18 +463,7 @@
         
         // Check on resize
         window.addEventListener('resize', checkScreenSize);
-
-        // Notification Dropdown
-        const notificationToggle = document.getElementById('notification-toggle');
-        const notificationDropdown = document.getElementById('notification-dropdown');
-
-        notificationToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            notificationDropdown.classList.toggle('show');
-            
-            // Hide user dropdown if open
-            userDropdown.classList.remove('show');
-        });
+        
         
         // User Dropdown
         const userMenuToggle = document.getElementById('user-menu-toggle');
@@ -726,16 +475,6 @@
             
             // Hide notification dropdown if open
             notificationDropdown.classList.remove('show');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!notificationToggle.contains(e.target) && !notificationDropdown.contains(e.target)) {
-                notificationDropdown.classList.remove('show');
-            }
-            
-            if (!userMenuToggle.contains(e.target) && !userDropdown.contains(e.target)) {
-                userDropdown.classList.remove('show');
-            }
         });
 
         // Tab functionality
@@ -770,20 +509,6 @@
                 modal.classList.add('show');
                 document.body.style.overflow = 'hidden'; // Prevent scrolling
             });
-        });
-
-        // Close modal
-        closeModal.addEventListener('click', () => {
-            modal.classList.remove('show');
-            document.body.style.overflow = '';
-        });
-
-        // Close modal when clicking outside
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('show');
-                document.body.style.overflow = '';
-            }
         });
 
         // Function to open specific vote form
@@ -840,17 +565,7 @@
             });
         });
 
-        // Handle close success button
-        document.getElementById('close-success').addEventListener('click', () => {
-            modal.classList.remove('show');
-            document.body.style.overflow = '';
-            
-            // Reset view for next time
-            setTimeout(() => {
-                document.getElementById('vote-form-container').style.display = 'block';
-                document.getElementById('vote-success').style.display = 'none';
-            }, 300);
-        });
+        
 
         // Handle checkbox selection limit for budget voting
         const budgetCheckboxes = document.querySelectorAll('input[name="budget-option"]');
