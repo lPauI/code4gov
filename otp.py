@@ -42,7 +42,7 @@ def get_otp(email: str):
 
 @app.get("/send_otp")
 def send_otp(email: str):
-    otp = randint(1000, 9999)
+    otp = randint(100000, 999999)
     subject = "OTP from Code4Gov"
     body = f"Your OTP is {otp}\n\nYou have 15 minutes to use this code."
     

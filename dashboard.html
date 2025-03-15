@@ -1,385 +1,1079 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | AdminPublic</title>
-    <meta name="description" content="Dashboard utilizator pentru platforma AdminPublic">
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/feather-icons"></script>
+    <title>Government Portal Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
 </head>
-<body>
-    <div class="dashboard-container">
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <h2 class="logo">GovPortal</h2>
-                <button class="sidebar-toggle" id="sidebar-toggle">
-                    <i data-feather="menu"></i>
-                </button>
+<body class="admin-theme">
+    <!-- Loading Bar -->
+    <div class="loading-bar" id="loading-bar"></div>
+    
+    <!-- Role Badge -->
+    <div class="role-badge" id="role-badge">Administrator</div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-landmark logo-icon"></i>
+            <span class="logo-text">GovPortal</span>
+        </div>
+        <div class="header-actions">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search...">
             </div>
-            
-            <div class="sidebar-content">
-                <div class="user-info">
-                    <div class="avatar">
-                        <span class="status-indicator online"></span>
+            <div class="notification-icon" id="notification-toggle">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">5</span>
+                
+                <!-- Notification Dropdown -->
+                <div class="notification-dropdown" id="notification-dropdown">
+                    <div class="notification-dropdown-header">
+                        <div class="notification-dropdown-title">Notifications</div>
+                        <div class="notification-dropdown-actions">Mark all as read</div>
                     </div>
-                    <div class="user-details">
-                        <h3>Maria Popescu</h3>
-                        <p>Cetățean</p>
+                    <div class="notification-dropdown-body">
+                        <div class="notification-item">
+                            <div class="notification-icon-container blue">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-title">New Document Uploaded</div>
+                                <div class="notification-message">A new document has been uploaded to the system.</div>
+                                <div class="notification-time">5 minutes ago</div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon-container green">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-title">Application Approved</div>
+                                <div class="notification-message">Your application has been approved.</div>
+                                <div class="notification-time">1 hour ago</div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon-container orange">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-title">System Maintenance</div>
+                                <div class="notification-message">The system will be under maintenance tonight from 10 PM to 2 AM.</div>
+                                <div class="notification-time">3 hours ago</div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon-container red">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-title">Application Rejected</div>
+                                <div class="notification-message">Your application has been rejected. Please check the details.</div>
+                                <div class="notification-time">Yesterday</div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon-container blue">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-title">New User Registered</div>
+                                <div class="notification-message">A new user has registered to the portal.</div>
+                                <div class="notification-time">2 days ago</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notification-dropdown-footer">
+                        <a href="#">View all notifications</a>
+                    </div>
+                </div>
+            </div>
+            <div class="user-menu" id="user-menu-toggle">
+                <div class="user-avatar">
+                    <span>JD</span>
+                </div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Administrator</div>
+                </div>
+                
+                <!-- User Dropdown -->
+                <div class="user-dropdown" id="user-dropdown">
+                    <div class="user-dropdown-header">
+                        <div class="user-dropdown-avatar">
+                            <span>JD</span>
+                        </div>
+                        <div class="user-dropdown-info">
+                            <div class="user-dropdown-name">John Doe</div>
+                            <div class="user-dropdown-role">Administrator</div>
+                        </div>
+                    </div>
+                    <div class="user-dropdown-body">
+                        <div class="user-dropdown-item">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </div>
+                        <div class="user-dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </div>
+                        <div class="user-dropdown-item" id="switch-role-btn">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Switch to User View</span>
+                        </div>
+                    </div>
+                    <div class="user-dropdown-footer">
+                        <button>
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Sign Out</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="nav-section">
+            <div class="nav-section-title">Main</div>
+            <ul class="nav-items">
+                <li class="nav-item active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Documents</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Calendar</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Statistics</span>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Administration</div>
+            <ul class="nav-items">
+                <li class="nav-item admin-only">
+                    <i class="fas fa-users"></i>
+                    <span>Users Management</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                </li>
+                <li class="nav-item admin-only">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Security</span>
+                </li>
+                <li class="nav-item admin-only">
+                    <i class="fas fa-database"></i>
+                    <span>System Logs</span>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Services</div>
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <i class="fas fa-id-card"></i>
+                    <span>ID Services</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-car"></i>
+                    <span>Vehicle Registration</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Property Records</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Education</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Healthcare</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <div class="sidebar-toggle" id="sidebar-toggle">
+        <i class="fas fa-bars" id="sidebar-icon"></i>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <h1 class="page-title">Dashboard Overview</h1>
+
+        <!-- Dashboard Stats -->
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Total Applications</div>
+                    <div class="stat-icon blue">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="total-applications">0</div>
+                <div class="stat-description">
+                    <i class="fas fa-arrow-up stat-trend up"></i>
+                    <span>8.2% increase this month</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Processed Documents</div>
+                    <div class="stat-icon light-blue">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="processed-documents">0</div>
+                <div class="stat-description">
+                    <i class="fas fa-arrow-up stat-trend up"></i>
+                    <span>12.5% increase this month</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Active Users</div>
+                    <div class="stat-icon green">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="active-users">0</div>
+                <div class="stat-description">
+                    <i class="fas fa-arrow-up stat-trend up"></i>
+                    <span>3.7% increase this month</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Pending Approvals</div>
+                    <div class="stat-icon orange">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="pending-approvals">0</div>
+                <div class="stat-description">
+                    <i class="fas fa-arrow-down stat-trend down"></i>
+                    <span>2.3% decrease this month</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Widgets -->
+        <div class="dashboard-widgets">
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="widget-title">Application Statistics</div>
+                    <div class="widget-actions">
+                        <button class="widget-action" data-period="day">Day</button>
+                        <button class="widget-action active" data-period="week">Week</button>
+                        <button class="widget-action" data-period="month">Month</button>
+                        <button class="widget-action" data-period="year">Year</button>
                     </div>
                 </div>
                 
-                <nav class="sidebar-nav">
-                    <ul>
-                        <li class="active">
-                            <a href="#">
-                                <i data-feather="home"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#profile">
-                                <i data-feather="user"></i>
-                                <span>Profil</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="voting.html">
-                                <i data-feather="check-square"></i>
-                                <span>Votare</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#complaints">
-                                <i data-feather="message-square"></i>
-                                <span>Sesizări</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#appointments">
-                                <i data-feather="calendar"></i>
-                                <span>Programări</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#documents">
-                                <i data-feather="file-text"></i>
-                                <span>Documente</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#surveys">
-                                <i data-feather="clipboard"></i>
-                                <span>Sondaje</span>
-                            </a>
-                        </li>
-                        <li class="separator"></li>
-                        <li>
-                            <a href="#settings">
-                                <i data-feather="settings"></i>
-                                <span>Setări</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#help">
-                                <i data-feather="help-circle"></i>
-                                <span>Ajutor</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.html" class="logout">
-                                <i data-feather="log-out"></i>
-                                <span>Deconectare</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Header -->
-
-            <!-- Dashboard Content -->
-            <div class="dashboard-content" id="dashboard-section">
-                <div class="page-header">
-                    <h1>Dashboard</h1>
-                    <p>Bine ai venit, Maria! Iată un rezumat al activității tale.</p>
+                <!-- Application Statistics Grid -->
+                <div class="app-stats-grid" id="app-stats-grid">
+                    <!-- Stats will be added dynamically with JavaScript -->
                 </div>
-
-                <!-- Stats Cards -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon blue">
-                            <i data-feather="calendar"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>2</h3>
-                            <p>Programări active</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon green">
-                            <i data-feather="check-square"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>5</h3>
-                            <p>Voturi participante</p>
+                
+                <!-- Application Timeline -->
+                <div class="app-timeline" id="app-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Today, 10:30 AM</div>
+                            <div class="timeline-title">New Application Surge</div>
+                            <div class="timeline-description">Received 120 new applications in the last hour, 35% higher than average.</div>
                         </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon purple">
-                            <i data-feather="file-text"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>8</h3>
-                            <p>Documente încărcate</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon amber">
-                            <i data-feather="award"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>120</h3>
-                            <p>Puncte acumulate</p>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Yesterday, 2:15 PM</div>
+                            <div class="timeline-title">Processing Rate Improved</div>
+                            <div class="timeline-description">Document processing time reduced by 15% after system optimization.</div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Alerts -->
-                <div class="alert-container">
-                    <div class="alert alert-warning">
-                        <i data-feather="alert-triangle"></i>
-                        <div class="alert-content">
-                            <h4>Buletin expiră în curând</h4>
-                            <p>Buletinul tău va expira în 30 de zile. Programează-te pentru reînnoire.</p>
-                        </div>
-                        <button class="alert-action">Programează</button>
-                    </div>
-                </div>
-
-                <!-- Main Sections -->
-                <div class="dashboard-grid">
-                    <!-- Upcoming Appointments -->
-                    <div class="dashboard-card">
-                        <div class="card-header">
-                            <h2>Programări viitoare</h2>
-                            <a href="#appointments" class="view-all">Vezi toate</a>
-                        </div>
-                        <div class="card-content">
-                            <div class="appointment-item">
-                                <div class="appointment-date">
-                                    <span class="day">15</span>
-                                    <span class="month">MAI</span>
-                                </div>
-                                <div class="appointment-details">
-                                    <h4>Direcția Permise Auto</h4>
-                                    <p>Reînnoire permis de conducere</p>
-                                    <span class="appointment-time">10:30 - 11:00</span>
-                                </div>
-                                <div class="appointment-actions">
-                                    <button class="btn btn-outline-primary btn-sm">
-                                        <i data-feather="edit-2"></i>
-                                    </button>
-                                    <button class="btn btn-outline-danger btn-sm">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="appointment-item">
-                                <div class="appointment-date">
-                                    <span class="day">22</span>
-                                    <span class="month">MAI</span>
-                                </div>
-                                <div class="appointment-details">
-                                    <h4>Serviciul de Evidență a Populației</h4>
-                                    <p>Reînnoire buletin</p>
-                                    <span class="appointment-time">14:00 - 14:30</span>
-                                </div>
-                                <div class="appointment-actions">
-                                    <button class="btn btn-outline-primary btn-sm">
-                                        <i data-feather="edit-2"></i>
-                                    </button>
-                                    <button class="btn btn-outline-danger btn-sm">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary btn-block">
-                                <i data-feather="plus"></i> Programare nouă
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Active Votes -->
-                    <div class="dashboard-card">
-                        <div class="card-header">
-                            <h2>Votări active</h2>
-                            <a href="voting.html" class="view-all">Vezi toate</a>
-                        </div>
-                        <div class="card-content">
-                            <div class="vote-item">
-                                <h4>Amenajare parc în cartierul Mărăști</h4>
-                                <p>Votează pentru una din cele trei propuneri de amenajare a parcului din cartierul Mărăști.</p>
-                                <div class="vote-meta">
-                                    <span class="vote-deadline">
-                                        <i data-feather="clock"></i> Expiră în 5 zile
-                                    </span>
-                                    <span class="vote-participants">
-                                        <i data-feather="users"></i> 1,245 participanți
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary btn-block">Votează acum</button>
-                            </div>
-                            <div class="vote-item">
-                                <h4>Bugetare participativă 2025</h4>
-                                <p>Votează proiectele propuse de cetățeni pentru bugetarea participativă din anul 2025.</p>
-                                <div class="vote-meta">
-                                    <span class="vote-deadline">
-                                        <i data-feather="clock"></i> Expiră în 12 zile
-                                    </span>
-                                    <span class="vote-participants">
-                                        <i data-feather="users"></i> 3,782 participanți
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary btn-block">Votează acum</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Documents -->
-                    <div class="dashboard-card">
-                        <div class="card-header">
-                            <h2>Documente recente</h2>
-                            <a href="#documents" class="view-all">Vezi toate</a>
-                        </div>
-                        <div class="card-content">
-                            <div class="document-list">
-                                <div class="document-item">
-                                    <div class="document-icon">
-                                        <i data-feather="file-text"></i>
-                                    </div>
-                                    <div class="document-details">
-                                        <h4>Buletin de identitate</h4>
-                                        <p>Încărcat pe 10 Apr 2025</p>
-                                        <div class="document-meta">
-                                            <span class="document-expiry warning">
-                                                <i data-feather="alert-circle"></i> Expiră în 30 zile
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="document-actions">
-                                        <button class="btn btn-icon">
-                                            <i data-feather="download"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="document-item">
-                                    <div class="document-icon">
-                                        <i data-feather="file-text"></i>
-                                    </div>
-                                    <div class="document-details">
-                                        <h4>Permis de conducere</h4>
-                                        <p>Încărcat pe 15 Mar 2025</p>
-                                        <div class="document-meta">
-                                            <span class="document-expiry">
-                                                <i data-feather="check-circle"></i> Expiră în 6 luni
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="document-actions">
-                                        <button class="btn btn-icon">
-                                            <i data-feather="download"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="document-item">
-                                    <div class="document-icon">
-                                        <i data-feather="file-text"></i>
-                                    </div>
-                                    <div class="document-details">
-                                        <h4>Certificat de naștere</h4>
-                                        <p>Încărcat pe 20 Feb 2025</p>
-                                        <div class="document-meta">
-                                            <span class="document-expiry">
-                                                <i data-feather="check-circle"></i> Nu expiră
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="document-actions">
-                                        <button class="btn btn-icon">
-                                            <i data-feather="download"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary btn-block">
-                                <i data-feather="upload"></i> Încarcă document
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Active Surveys -->
-                    <div class="dashboard-card">
-                        <div class="card-header">
-                            <h2>Sondaje active</h2>
-                            <a href="#surveys" class="view-all">Vezi toate</a>
-                        </div>
-                        <div class="card-content">
-                            <div class="survey-item">
-                                <div class="survey-header">
-                                    <h4>Satisfacție servicii publice</h4>
-                                    <span class="survey-points">+20 puncte</span>
-                                </div>
-                                <p>Evaluează calitatea serviciilor publice din orașul tău și ajută la îmbunătățirea lor.</p>
-                                <div class="survey-meta">
-                                    <span class="survey-time">
-                                        <i data-feather="clock"></i> Durată estimată: 5 min
-                                    </span>
-                                    <span class="survey-deadline">
-                                        <i data-feather="calendar"></i> Disponibil până pe 30 Mai
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary btn-block">Completează sondajul</button>
-                            </div>
-                            <div class="survey-item">
-                                <div class="survey-header">
-                                    <h4>Transport public</h4>
-                                    <span class="survey-points">+15 puncte</span>
-                                </div>
-                                <p>Spune-ți părerea despre transportul public și ajută la îmbunătățirea serviciilor.</p>
-                                <div class="survey-meta">
-                                    <span class="survey-time">
-                                        <i data-feather="clock"></i> Durată estimată: 3 min
-                                    </span>
-                                    <span class="survey-deadline">
-                                        <i data-feather="calendar"></i> Disponibil până pe 15 Mai
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary btn-block">Completează sondajul</button>
-                            </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Mar 15, 9:00 AM</div>
+                            <div class="timeline-title">Monthly Report Generated</div>
+                            <div class="timeline-description">March application statistics report is now available for review.</div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Footer -->
-            <footer class="dashboard-footer">
-                <p>&copy; <span id="current-year"></span> AdminPublic. Toate drepturile rezervate.</p>
-                <div class="footer-links">
-                    <a href="#">Termeni și condiții</a>
-                    <a href="#">Politica de confidențialitate</a>
-                    <a href="#">Ajutor</a>
+            
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="widget-title">Service Distribution</div>
                 </div>
-            </footer>
-        </main>
+                
+                <!-- Service Distribution - Donut Chart -->
+                <div class="service-distribution" id="service-distribution">
+                    <div class="donut-chart-container">
+                        <canvas class="donut-chart" id="donut-chart"></canvas>
+                        <div class="donut-center">
+                            <div class="donut-center-title">Total Services</div>
+                            <div class="donut-center-value">24,586</div>
+                        </div>
+                    </div>
+                    <div class="service-legend" id="service-legend">
+                        <!-- Legend items will be added dynamically with JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Task Management Widget -->
+        <div class="widget">
+            <div class="widget-header">
+                <div class="widget-title">Task Management</div>
+                <button class="widget-action" id="add-task-btn">
+                    <i class="fas fa-plus"></i> Add Task
+                </button>
+            </div>
+            
+            <div class="task-list" id="task-list">
+                <!-- Tasks will be added dynamically with JavaScript -->
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="recent-activity">
+            <div class="activity-header">
+                <div class="activity-title">Recent Activity</div>
+                <div class="view-all">View All</div>
+            </div>
+            <div class="activity-table-container">
+                <table class="activity-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Service</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-cell-avatar">AM</div>
+                                    <span>Ana Mihaescu</span>
+                                </div>
+                            </td>
+                            <td>ID Card Renewal</td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                            <td>Today, 10:30 AM</td>
+                            <td><i class="fas fa-eye"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-cell-avatar">IP</div>
+                                    <span>Ion Popescu</span>
+                                </div>
+                            </td>
+                            <td>Vehicle Registration</td>
+                            <td><span class="status-badge processing">Processing</span></td>
+                            <td>Today, 09:15 AM</td>
+                            <td><i class="fas fa-eye"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-cell-avatar">MD</div>
+                                    <span>Maria Dumitrescu</span>
+                                </div>
+                            </td>
+                            <td>Property Tax Payment</td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                            <td>Yesterday, 16:45 PM</td>
+                            <td><i class="fas fa-eye"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-cell-avatar">GI</div>
+                                    <span>George Ionescu</span>
+                                </div>
+                            </td>
+                            <td>Business License</td>
+                            <td><span class="status-badge pending">Pending</span></td>
+                            <td>Yesterday, 14:20 PM</td>
+                            <td><i class="fas fa-eye"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-cell-avatar">CP</div>
+                                    <span>Cristina Popa</span>
+                                </div>
+                            </td>
+                            <td>Passport Application</td>
+                            <td><span class="status-badge rejected">Rejected</span></td>
+                            <td>Mar 14, 11:30 AM</td>
+                            <td><i class="fas fa-eye"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <div class="theme-option admin active" id="admin-theme">
+            <i class="fas fa-user-shield"></i>
+        </div>
+        <div class="theme-option user" id="user-theme">
+            <i class="fas fa-user"></i>
+        </div>
     </div>
 
-    <script src="./js/dashboard.js"></script>
+    <!-- JavaScript -->
+    <script>
+        // Sidebar Toggle Functionality
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebarIcon = document.getElementById('sidebar-icon');
+        const mainContent = document.getElementById('main-content');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            sidebarToggle.classList.toggle('collapsed');
+            mainContent.classList.toggle('expanded');
+            
+            // Change icon based on sidebar state
+            if (sidebar.classList.contains('collapsed')) {
+                sidebarIcon.classList.remove('fa-bars');
+                sidebarIcon.classList.add('fa-chevron-right');
+            } else {
+                sidebarIcon.classList.remove('fa-chevron-right');
+                sidebarIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Responsive behavior for mobile
+        function checkScreenSize() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.add('collapsed');
+                sidebarToggle.classList.add('collapsed');
+                mainContent.classList.add('expanded');
+                sidebarIcon.classList.remove('fa-bars');
+                sidebarIcon.classList.add('fa-chevron-right');
+            } else {
+                sidebar.classList.remove('collapsed');
+                sidebarToggle.classList.remove('collapsed');
+                mainContent.classList.remove('expanded');
+                sidebarIcon.classList.remove('fa-chevron-right');
+                sidebarIcon.classList.add('fa-bars');
+            }
+        }
+
+        // Check on load
+        checkScreenSize();
+        
+        // Check on resize
+        window.addEventListener('resize', checkScreenSize);
+
+        // Notification Dropdown
+        const notificationToggle = document.getElementById('notification-toggle');
+        const notificationDropdown = document.getElementById('notification-dropdown');
+
+        notificationToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            notificationDropdown.classList.toggle('show');
+            
+            // Hide user dropdown if open
+            userDropdown.classList.remove('show');
+        });
+        
+        // User Dropdown
+        const userMenuToggle = document.getElementById('user-menu-toggle');
+        const userDropdown = document.getElementById('user-dropdown');
+        
+        userMenuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userDropdown.classList.toggle('show');
+            
+            // Hide notification dropdown if open
+            notificationDropdown.classList.remove('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!notificationToggle.contains(e.target) && !notificationDropdown.contains(e.target)) {
+                notificationDropdown.classList.remove('show');
+            }
+            
+            if (!userMenuToggle.contains(e.target) && !userDropdown.contains(e.target)) {
+                userDropdown.classList.remove('show');
+            }
+        });
+
+        // Animated Counter
+        function animateCounter(elementId, targetValue, duration = 2000) {
+            const element = document.getElementById(elementId);
+            const startValue = 0;
+            const increment = targetValue / (duration / 16);
+            let currentValue = startValue;
+            
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= targetValue) {
+                    clearInterval(timer);
+                    currentValue = targetValue;
+                }
+                element.textContent = Math.floor(currentValue).toLocaleString();
+            }, 16);
+        }
+
+        // Initialize counters with animation
+        setTimeout(() => {
+            animateCounter('total-applications', 12845);
+            animateCounter('processed-documents', 9382);
+            animateCounter('active-users', 5721);
+            animateCounter('pending-approvals', 1284);
+        }, 500);
+
+        // Application Statistics Grid
+        function createAppStatsGrid(period) {
+            const container = document.getElementById('app-stats-grid');
+            container.innerHTML = '';
+            
+            let stats = [];
+            
+            switch(period) {
+                case 'day':
+                    stats = [
+                        { title: 'New Applications', icon: 'fa-file-alt', value: 245, trend: 'up', percentage: 12 },
+                        { title: 'Processed', icon: 'fa-check-circle', value: 189, trend: 'up', percentage: 8 },
+                        { title: 'Pending Review', icon: 'fa-clock', value: 56, trend: 'down', percentage: 3 },
+                        { title: 'Rejected', icon: 'fa-times-circle', value: 12, trend: 'neutral', percentage: 0 },
+                        { title: 'Processing Time', icon: 'fa-stopwatch', value: '42 min', trend: 'down', percentage: 15 },
+                        { title: 'Satisfaction', icon: 'fa-smile', value: '94%', trend: 'up', percentage: 2 }
+                    ];
+                    break;
+                case 'week':
+                    stats = [
+                        { title: 'New Applications', icon: 'fa-file-alt', value: 1245, trend: 'up', percentage: 8 },
+                        { title: 'Processed', icon: 'fa-check-circle', value: 1056, trend: 'up', percentage: 12 },
+                        { title: 'Pending Review', icon: 'fa-clock', value: 189, trend: 'down', percentage: 5 },
+                        { title: 'Rejected', icon: 'fa-times-circle', value: 78, trend: 'up', percentage: 3 },
+                        { title: 'Processing Time', icon: 'fa-stopwatch', value: '38 min', trend: 'down', percentage: 10 },
+                        { title: 'Satisfaction', icon: 'fa-smile', value: '92%', trend: 'up', percentage: 1 }
+                    ];
+                    break;
+                case 'month':
+                    stats = [
+                        { title: 'New Applications', icon: 'fa-file-alt', value: 5280, trend: 'up', percentage: 15 },
+                        { title: 'Processed', icon: 'fa-check-circle', value: 4850, trend: 'up', percentage: 18 },
+                        { title: 'Pending Review', icon: 'fa-clock', value: 430, trend: 'down', percentage: 8 },
+                        { title: 'Rejected', icon: 'fa-times-circle', value: 320, trend: 'neutral', percentage: 0 },
+                        { title: 'Processing Time', icon: 'fa-stopwatch', value: '45 min', trend: 'down', percentage: 12 },
+                        { title: 'Satisfaction', icon: 'fa-smile', value: '91%', trend: 'up', percentage: 3 }
+                    ];
+                    break;
+                case 'year':
+                    stats = [
+                        { title: 'New Applications', icon: 'fa-file-alt', value: 58420, trend: 'up', percentage: 22 },
+                        { title: 'Processed', icon: 'fa-check-circle', value: 54280, trend: 'up', percentage: 25 },
+                        { title: 'Pending Review', icon: 'fa-clock', value: 4140, trend: 'down', percentage: 15 },
+                        { title: 'Rejected', icon: 'fa-times-circle', value: 3650, trend: 'down', percentage: 5 },
+                        { title: 'Processing Time', icon: 'fa-stopwatch', value: '40 min', trend: 'down', percentage: 18 },
+                        { title: 'Satisfaction', icon: 'fa-smile', value: '93%', trend: 'up', percentage: 4 }
+                    ];
+                    break;
+            }
+            
+            stats.forEach(stat => {
+                const statCard = document.createElement('div');
+                statCard.className = 'app-stat-card';
+                
+                const statTitle = document.createElement('div');
+                statTitle.className = 'app-stat-title';
+                statTitle.innerHTML = `<i class="fas ${stat.icon}"></i> ${stat.title}`;
+                
+                const statValue = document.createElement('div');
+                statValue.className = 'app-stat-value';
+                statValue.textContent = stat.value.toLocaleString();
+                
+                const statTrend = document.createElement('div');
+                statTrend.className = `app-stat-trend ${stat.trend}`;
+                
+                let trendIcon, trendText;
+                if (stat.trend === 'up') {
+                    trendIcon = '<i class="fas fa-arrow-up"></i>';
+                    trendText = `${stat.percentage}% increase`;
+                } else if (stat.trend === 'down') {
+                    trendIcon = '<i class="fas fa-arrow-down"></i>';
+                    trendText = `${stat.percentage}% decrease`;
+                } else {
+                    trendIcon = '<i class="fas fa-minus"></i>';
+                    trendText = 'No change';
+                }
+                
+                statTrend.innerHTML = `${trendIcon} ${trendText}`;
+                
+                statCard.appendChild(statTitle);
+                statCard.appendChild(statValue);
+                statCard.appendChild(statTrend);
+                
+                container.appendChild(statCard);
+            });
+        }
+
+        // Service Distribution - Donut Chart
+        function createDonutChart() {
+            const canvas = document.getElementById('donut-chart');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas dimensions
+            canvas.width = 200;
+            canvas.height = 200;
+            
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const outerRadius = Math.min(centerX, centerY) - 5;
+            const innerRadius = outerRadius * 0.6;
+            
+            const services = [
+                { name: 'ID Services', percentage: 30, color: '#1e40af' },
+                { name: 'Vehicle Registration', percentage: 25, color: '#3b82f6' },
+                { name: 'Property Records', percentage: 15, color: '#60a5fa' },
+                { name: 'Education', percentage: 10, color: '#93c5fd' },
+                { name: 'Healthcare', percentage: 12, color: '#bfdbfe' },
+                { name: 'Other', percentage: 8, color: '#dbeafe' }
+            ];
+            
+            let startAngle = -0.5 * Math.PI;
+            
+            services.forEach(service => {
+                const sliceAngle = (service.percentage / 100) * 2 * Math.PI;
+                const endAngle = startAngle + sliceAngle;
+                
+                // Draw slice
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, outerRadius, startAngle, endAngle);
+                ctx.arc(centerX, centerY, innerRadius, endAngle, startAngle, true);
+                ctx.closePath();
+                ctx.fillStyle = service.color;
+                ctx.fill();
+                
+                startAngle = endAngle;
+            });
+            
+            // Create legend
+            const legendContainer = document.getElementById('service-legend');
+            legendContainer.innerHTML = '';
+            
+            services.forEach(service => {
+                const legendItem = document.createElement('div');
+                legendItem.className = 'service-legend-item';
+                
+                const legendColor = document.createElement('div');
+                legendColor.className = 'service-legend-color';
+                legendColor.style.backgroundColor = service.color;
+                
+                const legendInfo = document.createElement('div');
+                legendInfo.className = 'service-legend-info';
+                
+                const legendName = document.createElement('div');
+                legendName.className = 'service-legend-name';
+                legendName.textContent = service.name;
+                
+                const legendValue = document.createElement('div');
+                legendValue.className = 'service-legend-value';
+                legendValue.textContent = `${service.percentage}%`;
+                
+                legendInfo.appendChild(legendName);
+                legendInfo.appendChild(legendValue);
+                
+                legendItem.appendChild(legendColor);
+                legendItem.appendChild(legendInfo);
+                
+                legendContainer.appendChild(legendItem);
+            });
+        }
+
+        // Task Management
+        function createTaskList(containerId, tasks) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            tasks.forEach(task => {
+                const taskItem = document.createElement('div');
+                taskItem.className = 'task-item';
+                
+                const taskCheckbox = document.createElement('div');
+                taskCheckbox.className = `task-checkbox ${task.completed ? 'checked' : ''}`;
+                if (task.completed) {
+                    taskCheckbox.innerHTML = '<i class="fas fa-check"></i>';
+                }
+                
+                const taskContent = document.createElement('div');
+                taskContent.className = 'task-content';
+                
+                const taskTitle = document.createElement('div');
+                taskTitle.className = `task-title ${task.completed ? 'completed' : ''}`;
+                taskTitle.textContent = task.title;
+                
+                const taskMeta = document.createElement('div');
+                taskMeta.className = 'task-meta';
+                
+                const taskPriority = document.createElement('span');
+                taskPriority.className = `task-priority ${task.priority}`;
+                taskPriority.textContent = task.priority;
+                
+                const taskDueDate = document.createElement('span');
+                taskDueDate.textContent = `Due: ${task.dueDate}`;
+                
+                taskMeta.appendChild(taskPriority);
+                taskMeta.appendChild(taskDueDate);
+                
+                taskContent.appendChild(taskTitle);
+                taskContent.appendChild(taskMeta);
+                
+                const taskActions = document.createElement('div');
+                taskActions.className = 'task-actions';
+                
+                const editAction = document.createElement('div');
+                editAction.className = 'task-action tooltip';
+                editAction.innerHTML = '<i class="fas fa-edit"></i>';
+                
+                const editTooltip = document.createElement('span');
+                editTooltip.className = 'tooltip-text';
+                editTooltip.textContent = 'Edit Task';
+                
+                editAction.appendChild(editTooltip);
+                
+                const deleteAction = document.createElement('div');
+                deleteAction.className = 'task-action tooltip';
+                deleteAction.innerHTML = '<i class="fas fa-trash"></i>';
+                
+                const deleteTooltip = document.createElement('span');
+                deleteTooltip.className = 'tooltip-text';
+                deleteTooltip.textContent = 'Delete Task';
+                
+                deleteAction.appendChild(deleteTooltip);
+                
+                taskActions.appendChild(editAction);
+                taskActions.appendChild(deleteAction);
+                
+                taskItem.appendChild(taskCheckbox);
+                taskItem.appendChild(taskContent);
+                taskItem.appendChild(taskActions);
+                
+                container.appendChild(taskItem);
+                
+                // Toggle task completion
+                taskCheckbox.addEventListener('click', () => {
+                    taskCheckbox.classList.toggle('checked');
+                    taskTitle.classList.toggle('completed');
+                    
+                    if (taskCheckbox.classList.contains('checked')) {
+                        taskCheckbox.innerHTML = '<i class="fas fa-check"></i>';
+                    } else {
+                        taskCheckbox.innerHTML = '';
+                    }
+                });
+                
+                // Delete task
+                deleteAction.addEventListener('click', () => {
+                    taskItem.style.opacity = '0';
+                    setTimeout(() => {
+                        container.removeChild(taskItem);
+                    }, 300);
+                });
+            });
+        }
+
+        // Chart Period Buttons
+        const chartActions = document.querySelectorAll('.widget-action[data-period]');
+        chartActions.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                chartActions.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Update app stats grid based on period
+                const period = button.getAttribute('data-period');
+                createAppStatsGrid(period);
+            });
+        });
+
+        // Initialize data visualizations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Application Stats Grid
+            createAppStatsGrid('week');
+            
+            // Initialize Donut Chart
+            createDonutChart();
+            
+            // Initialize Task List
+            const tasks = [
+                { 
+                    title: 'Review pending applications', 
+                    completed: false, 
+                    priority: 'high', 
+                    dueDate: 'Today' 
+                },
+                { 
+                    title: 'Update system documentation', 
+                    completed: true, 
+                    priority: 'medium', 
+                    dueDate: 'Yesterday' 
+                },
+                { 
+                    title: 'Prepare monthly report', 
+                    completed: false, 
+                    priority: 'high', 
+                    dueDate: 'Tomorrow' 
+                },
+                { 
+                    title: 'Schedule team meeting', 
+                    completed: false, 
+                    priority: 'medium', 
+                    dueDate: 'Mar 20' 
+                },
+                { 
+                    title: 'Review security protocols', 
+                    completed: false, 
+                    priority: 'low', 
+                    dueDate: 'Mar 25' 
+                }
+            ];
+            createTaskList('task-list', tasks);
+            
+            // Make sure charts are responsive
+            window.addEventListener('resize', function() {
+                createDonutChart();
+            });
+        });
+
+        // Add Task Button
+        document.getElementById('add-task-btn').addEventListener('click', () => {
+            const taskTitle = prompt('Enter task title:');
+            if (taskTitle) {
+                const taskList = document.getElementById('task-list');
+                const newTask = {
+                    title: taskTitle,
+                    completed: false,
+                    priority: 'medium',
+                    dueDate: 'Today'
+                };
+                
+                // Create a single task item
+                const taskItem = document.createElement('div');
+                taskItem.className = 'task-item';
+                
+                const taskCheckbox = document.createElement('div');
+                taskCheckbox.className = 'task-checkbox';
+                
+                const taskContent = document.createElement('div');
+                taskContent.className = 'task-content';
+                
+                const taskTitleEl = document.createElement('div');
+                taskTitleEl.className = 'task-title';
+                taskTitleEl.textContent = newTask.title;
+                
+                const taskMeta = document.createElement('div');
+                taskMeta.className = 'task-meta';
+                
+                const taskPriority = document.createElement('span');
+                taskPriority.className = `task-priority ${newTask.priority}`;
+                taskPriority.textContent = newTask.priority;
+                
+                const taskDueDate = document.createElement('span');
+                taskDueDate.textContent = `Due: ${newTask.dueDate}`;
+                
+                taskMeta.appendChild(taskPriority);
+                taskMeta.appendChild(taskDueDate);
+                
+                taskContent.appendChild(taskTitleEl);
+                taskContent.appendChild(taskMeta);
+                
+                const taskActions = document.createElement('div');
+                taskActions.className = 'task-actions';
+                
+                const editAction = document.createElement('div');
+                editAction.className = 'task-action tooltip';
+                editAction.innerHTML = '<i class="fas fa-edit"></i>';
+                
+                const editTooltip = document.createElement('span');
+                editTooltip.className = 'tooltip-text';
+                editTooltip.textContent = 'Edit Task';
+                
+                editAction.appendChild(editTooltip);
+                
+                const deleteAction = document.createElement('div');
+                deleteAction.className = 'task-action tooltip';
+                deleteAction.innerHTML = '<i class="fas fa-trash"></i>';
+                
+                const deleteTooltip = document.createElement('span');
+                deleteTooltip.className = 'tooltip-text';
+                deleteTooltip.textContent = 'Delete Task';
+                
+                deleteAction.appendChild(deleteTooltip);
+                
+                taskActions.appendChild(editAction);
+                taskActions.appendChild(deleteAction);
+                
+                taskItem.appendChild(taskCheckbox);
+                taskItem.appendChild(taskContent);
+                taskItem.appendChild(taskActions);
+                
+                taskList.insertBefore(taskItem, taskList.firstChild);
+                
+                // Add animation
+                taskItem.style.opacity = '0';
+                taskItem.style.transform = 'translateY(-10px)';
+                taskItem.style.transition = 'opacity 0.3s, transform 0.3s';
+                
+                setTimeout(() => {
+                    taskItem.style.opacity = '1';
+                    taskItem.style.transform = 'translateY(0)';
+                }, 10);
+                
+                // Toggle task completion
+                taskCheckbox.addEventListener('click', () => {
+                    taskCheckbox.classList.toggle('checked');
+                    taskTitleEl.classList.toggle('completed');
+                    
+                    if (taskCheckbox.classList.contains('checked')) {
+                        taskCheckbox.innerHTML = '<i class="fas fa-check"></i>';
+                    } else {
+                        taskCheckbox.innerHTML = '';
+                    }
+                });
+                
+                // Delete task
+                deleteAction.addEventListener('click', () => {
+                    taskItem.style.opacity = '0';
+                    taskItem.style.transform = 'translateY(-10px)';
+                    setTimeout(() => {
+                        taskList.removeChild(taskItem);
+                    }, 300);
+                });
+            }
+        });
+
+        // Make table rows clickable
+        const tableRows = document.querySelectorAll('.activity-table tbody tr');
+        tableRows.forEach(row => {
+            row.addEventListener('click', () => {
+                // You would typically navigate to a detail page or show a modal
+                alert('Viewing details for this activity');
+            });
+            row.style.cursor = 'pointer';
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-bar input');
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                alert(`Searching for: ${this.value}`);
+                this.value = '';
+            }
+        });
+
+        // Make nav items clickable
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                navItems.forEach(navItem => navItem.classList.remove('active'));
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // You would typically navigate to a new page here
+                const itemName = this.querySelector('span').textContent;
+                alert(`Navigating to ${itemName}`);
+            });
+        });
+
+        // Hide loading bar after page load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading-bar').style.display = 'none';
+            }, 2000);
+        });
+        
+        // Theme Switcher
+        const adminThemeBtn = document.getElementById('admin-theme');
+        const userThemeBtn = document.getElementById('user-theme');
+        const switchRoleBtn = document.getElementById('switch-role-btn');
+        const roleBadge = document.getElementById('role-badge');
+        const userRoleText = document.querySelector('.user-role');
+        const userDropdownRole = document.querySelector('.user-dropdown-role');
+        
+        adminThemeBtn.addEventListener('click', () => {
+            document.body.classList.remove('user-theme');
+            document.body.classList.add('admin-theme');
+            adminThemeBtn.classList.add('active');
+            userThemeBtn.classList.remove('active');
+            roleBadge.textContent = 'Administrator';
+            userRoleText.textContent = 'Administrator';
+            userDropdownRole.textContent = 'Administrator';
+            switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to User View</span>';
+        });
+        
+        userThemeBtn.addEventListener('click', () => {
+            document.body.classList.remove('admin-theme');
+            document.body.classList.add('user-theme');
+            adminThemeBtn.classList.remove('active');
+            userThemeBtn.classList.add('active');
+            roleBadge.textContent = 'User';
+            userRoleText.textContent = 'User';
+            userDropdownRole.textContent = 'User';
+            switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to Admin View</span>';
+        });
+        
+        switchRoleBtn.addEventListener('click', () => {
+            if (document.body.classList.contains('  admin-theme')) {
+                document.body.classList.remove('admin-theme');
+                document.body.classList.add('user-theme');
+                adminThemeBtn.classList.remove('active');
+                userThemeBtn.classList.add('active');
+                roleBadge.textContent = 'User';
+                userRoleText.textContent = 'User';
+                userDropdownRole.textContent = 'User';  
+                switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to Admin View</span>';
+            } else {
+                document.body.classList.remove('user-theme');
+                document.body.classList.add('admin-theme');
+                adminThemeBtn.classList.add('active');
+                userThemeBtn.classList.remove('active');
+                roleBadge.textContent = 'Administrator';
+                userRoleText.textContent = 'Administrator';
+                userDropdownRole.textContent = 'Administrator';
+                switchRoleBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Switch to User View</span>';
+            }
+            userDropdown.classList.remove('show');
+        });
+    </script>
 </body>
 </html>
-
